@@ -1,13 +1,21 @@
-# 🌲 Ścieżka Natury — Projekt SaaS/Web
+# 🌲 Ścieżka Natury — Projekt Edukacyjny
 
 ## Właściciel
-**Jakub** — początkujący developer, vanilla HTML/CSS/JS
+**Jakub** — początkujący developer
 
-## Opis
-Edukacyjna, jednostronicowa strona z efektem parallax scrolling, opowiadająca historię ekosystemu leśnego — od gleby po niebo, warstwa po warstwie. 7 warstw lasu z treściami edukacyjnymi, animacjami scroll-triggered i mini-quizem.
+## Stack Technologiczny
+| Warstwa | Technologia | Wersja / Uwagi |
+|---|---|---|
+| **Framework** | Next.js (App Router) | Zawsze App Router |
+| **Język** | TypeScript | Strict mode, zero `any` |
+| **UI** | React 19+ | Server Components domyślnie |
+| **Styling** | Tailwind CSS v4 | Utility-first, `cn()` helper |
+| **Package Manager** | npm | |
 
 ## Status
 📋 **Faza:** Planowanie (po workflow analysis)
+
+---
 
 ## Spis Dokumentów
 
@@ -21,6 +29,8 @@ Edukacyjna, jednostronicowa strona z efektem parallax scrolling, opowiadająca h
 | [resource-analysis.md](resource-analysis.md) | WF_Resource_Analysis — audyt czasu, budżetu, ryzyk | ✅ Done |
 | [docs.md](docs.md) | Pełna dokumentacja techniczna projektu | ✅ Done |
 | [implementation-plan.md](implementation-plan.md) | Skrócony plan implementacji z diagramami | ✅ Done |
+
+---
 
 ## Kluczowe Wnioski z Workflow
 
@@ -53,6 +63,8 @@ Edukacyjna, jednostronicowa strona z efektem parallax scrolling, opowiadająca h
 - **Ryzyka:** 7 zidentyfikowanych, najważniejsze: parallax iOS (łatwy fallback)
 - **Macierz priorytetów:** 18 elementów z wartością biznesową vs trudnością
 
+---
+
 ## Wykonane Workflow
 
 | # | Workflow | Plik |
@@ -62,6 +74,28 @@ Edukacyjna, jednostronicowa strona z efektem parallax scrolling, opowiadająca h
 | 3 | WF_MVP_Scoping | [mvp-scoping.md](mvp-scoping.md) |
 | 4 | WF_ICP_Persona | [icp-persona.md](icp-persona.md) |
 | 5 | WF_Resource_Analysis | [resource-analysis.md](resource-analysis.md) |
+
+---
+
+## Reguły Implementacji
+
+Projekt będzie realizowany zgodnie z:
+- **Dev Rules:** `.kilocode\rules\dev-rules.md` — standardy kodowania Next.js/React
+- **Planning Workflow:** `.kilocode\rules\planning-workflow.md` — proces planowania
+
+### Kluczowe Zasady Dev Rules
+- TypeScript strict mode, zero `any`
+- Server Components domyślnie
+- Tailwind CSS utility-first
+- Małe komponenty (~80 linii max)
+
+### Kluczowe Zasady Planning Workflow
+- Jeden plan = jedna funkcjonalność = jedna sesja
+- Checkboxy i numeracja każdego kroku
+- Weryfikacja po każdej sekcji
+- Komendy finalizacji: `npx tsc --noEmit`, `npm run lint`, `npm run build`
+
+---
 
 ## Następny krok
 → Przejść do implementacji Tier 1 (tryb Code) lub przeprowadzić dodatkowe workflow (WF_Competitor_Audit, WF_GTM_Strategy).
