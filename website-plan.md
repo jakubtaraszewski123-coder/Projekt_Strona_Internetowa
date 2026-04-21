@@ -17,24 +17,24 @@ Strona typu portfolio prezentująca katalog roślin leśnych w formie interaktyw
 
 ## Sekcja 1: Struktura HTML i dane
 
-- [ ] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi roślin (min. 12 pozycji)
-- [ ] 1.2 Utworzyć `index.html` z sekcjami: header, hero, karty roślin, footer
-- [ ] 1.3 Dodać strukturę nawigacji (logo, filtry kategorii, wyszukiwarka)
-- [ ] 1.4 Dodać modal dla szczegółów rośliny (ukryty domyślnie)
+- [x] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi roślin (min. 12 pozycji) ✓
+- [x] 1.2 Utworzyć `index.html` z sekcjami: header, hero, karty roślin, footer ✓
+- [x] 1.3 Dodać strukturę nawigacji (logo, filtry kategorii, wyszukiwarka) ✓
+- [x] 1.4 Dodać modal dla szczegółów rośliny (ukryty domyślnie) ✓
 
 ### Weryfikacja Sekcji 1
-- [ ] 1.5 Otworzyć `index.html` w przeglądarce — struktura strony widoczna
-- [ ] 1.6 Sprawdzić konsolę — brak błędów
+- [x] 1.5 Otworzyć `index.html` w przeglądarce — struktura strony widoczna
+- [x] 1.6 Sprawdzić konsolę — brak błędów
 
 ---
 
 ## Sekcja 2: Style CSS i design
 
-- [ ] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego)
-- [ ] 2.2 Zaimplementować fonty (np. Montserrat dla nagłówków, Open Sans dla tekstu)
-- [ ] 2.3 Stylizować header z efektem glassmorphism
-- [ ] 2.4 Utworzyć responsywny grid dla kart roślin (1 kolumna mobile, 2 tablet, 3-4 desktop)
-- [ ] 2.5 Dodać hover efekty na kartach (transform: scale, box-shadow)
+- [x] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego) ✓
+- [x] 2.2 Zaimplementować fonty (np. Montserrat dla nagłówków, Open Sans dla tekstu) ✓
+- [x] 2.3 Stylizować header z efektem glassmorphism ✓
+- [x] 2.4 Utworzyć responsywny grid dla kart roślin (1 kolumna mobile, 2 tablet, 3-4 desktop) ✓
+- [x] 2.5 Dodać hover efekty na kartach (transform: scale, box-shadow) ✓
 - [ ] 2.6 Stylizować przyciski filtrów z aktywnym stanem
 - [ ] 2.7 Dodać animacje wejścia dla kart (fade-in przy load)
 
