@@ -154,6 +154,7 @@ const plantsData = [
 let plants = [];
 let currentCategory = 'all';
 let searchTerm = '';
+let renderTimeout = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   plants = [...plantsData];
@@ -162,36 +163,74 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSearch();
   setupModal();
   setupScrollTop();
+  setupParallax();
+  setupSmoothScroll();
 });
 
-function renderPlants() {
+function updateResultsCount(displayedCount, totalCount, isLoading = false) {
+  const resultsCountElement = document.getElementById('resultsCount');
+  if (!resultsCountElement) return;
+  
+  if (isLoading) {
+    resultsCountElement.textContent = 'Trwa ładowanie wyników...';
+  } else {
+    resultsCountElement.textContent = `Wyświetlane: ${displayedCount} z ${totalCount}`;
+  }
+}
+
+function renderSkeletons(count = 6) {
   const grid = document.getElementById('plantsGrid');
-  const resultsCount = document.getElementById('resultsCount');
+  if (!grid) return;
   
-  const filtered = plants.filter(plant => {
-    const matchesCategory = currentCategory === 'all' || plant.category === currentCategory;
-    const matchesSearch = searchTerm === '' || 
-      plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      plant.scientificName.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-  
-  grid.innerHTML = filtered.map((plant, index) => `
-    <div class="plant-card" data-id="${plant.id}" style="animation-delay: ${index * 0.1}s">
-      <img class="plant-card-image" src="${plant.image}" alt="${plant.name}" loading="lazy">
-      <div class="plant-card-body">
-        <h3 class="plant-card-name">${plant.name}</h3>
-        <p class="plant-card-scientific">${plant.scientificName}</p>
-        <span class="plant-card-category">${plant.category}</span>
+  grid.innerHTML = Array(count).fill(0).map(() => `
+    <div class="skeleton-card">
+      <div class="skeleton skeleton-image"></div>
+      <div class="skeleton-body">
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-subtitle"></div>
+        <div class="skeleton skeleton-badge"></div>
       </div>
     </div>
   `).join('');
+}
+
+function renderPlants() {
+  const grid = document.getElementById('plantsGrid');
+  if (!grid) return;
   
-  resultsCount.textContent = `Wyświetlane: ${filtered.length} z ${plants.length}`;
+  renderSkeletons(6);
+  updateResultsCount(0, 0, true);
   
-  grid.querySelectorAll('.plant-card').forEach(card => {
-    card.addEventListener('click', () => openModal(parseInt(card.dataset.id)));
-  });
+  if (renderTimeout) {
+    clearTimeout(renderTimeout);
+  }
+  
+  renderTimeout = setTimeout(() => {
+    const filtered = plants.filter(plant => {
+      const matchesCategory = currentCategory === 'all' || plant.category === currentCategory;
+      const matchesSearch = searchTerm === '' || 
+        plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        plant.scientificName.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+    
+    grid.innerHTML = filtered.map((plant, index) => `
+      <div class="plant-card" data-id="${plant.id}" style="animation-delay: ${index * 0.1}s">
+        <img class="plant-card-image" src="${plant.image}" alt="${plant.name}" loading="lazy" decoding="async">
+        <div class="plant-card-body">
+          <h3 class="plant-card-name">${plant.name}</h3>
+          <p class="plant-card-scientific">${plant.scientificName}</p>
+          <span class="plant-card-category">${plant.category}</span>
+        </div>
+      </div>
+    `).join('');
+    
+    updateResultsCount(filtered.length, plants.length, false);
+    
+    grid.querySelectorAll('.plant-card').forEach(card => {
+      card.addEventListener('click', () => openModal(parseInt(card.dataset.id)));
+    });
+  }, 400); 
 }
 
 function setupFilters() {
@@ -211,27 +250,33 @@ function setupSearch() {
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.querySelector('.search-btn');
   
-  searchInput.addEventListener('input', (e) => {
-    searchTerm = e.target.value;
-    renderPlants();
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchTerm = e.target.value;
+      renderPlants();
+    });
+    
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        searchTerm = searchInput.value;
+        renderPlants();
+      }
+    });
+  }
   
-  searchBtn.addEventListener('click', () => {
-    searchTerm = searchInput.value;
-    renderPlants();
-  });
-  
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
+  if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', () => {
       searchTerm = searchInput.value;
       renderPlants();
-    }
-  });
+    });
+  }
 }
 
 function setupModal() {
   const modal = document.getElementById('plantModal');
   const closeBtn = document.getElementById('modalClose');
+  
+  if (!modal || !closeBtn) return;
   
   closeBtn.addEventListener('click', closeModal);
   
@@ -255,6 +300,7 @@ function openModal(plantId) {
   const modal = document.getElementById('plantModal');
   
   document.getElementById('modalImage').src = plant.image;
+  document.getElementById('modalImage').alt = `Zdjęcie rośliny: ${plant.name}`;
   document.getElementById('modalName').textContent = plant.name;
   document.getElementById('modalScientific').textContent = plant.scientificName;
   document.getElementById('modalCategory').textContent = plant.category;
@@ -268,12 +314,15 @@ function openModal(plantId) {
 
 function closeModal() {
   const modal = document.getElementById('plantModal');
+  if (!modal) return;
+  
   modal.classList.remove('active');
   document.body.style.overflow = '';
 }
 
 function setupScrollTop() {
   const scrollTopBtn = document.getElementById('scrollTop');
+  if (!scrollTopBtn) return; 
   
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -285,5 +334,59 @@ function setupScrollTop() {
   
   scrollTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+function setupParallax() {
+  const heroOverlay = document.querySelector('.hero-overlay');
+  const heroContent = document.querySelector('.hero-content');
+  
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        
+        if (scrollY <= window.innerHeight) {
+          if (heroOverlay) {
+            heroOverlay.style.backgroundPosition = `center ${scrollY * 0.4}px`;
+          }
+          if (heroContent) {
+            heroContent.style.transform = `translateY(${scrollY * 0.2}px)`;
+            heroContent.style.opacity = Math.max(1 - (scrollY / 500), 0);
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+function setupSmoothScroll() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const header = document.querySelector('.header');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      
+      if (!targetId || !targetId.startsWith('#') || targetId === '#') return;
+      
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        e.preventDefault();
+        
+        const headerHeight = header ? header.offsetHeight : 0;
+        const elementPosition = targetSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 }
