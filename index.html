@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leśny Herbarium - Katalog Roślin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Leśny Herbarium</span>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link">Strona główna</a></li>
+                    <li><a href="#plants" class="nav-link">Rośliny</a></li>
+                    <li><a href="#about" class="nav-link">O projekcie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Odkryj Tajemnice Lasu</h1>
+            <p class="hero-subtitle">Interaktywny katalog roślin leśnych Polski. Poznaj drzewa, krzewy, zioła, grzyby i kwiaty.</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Szukaj rośliny...">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="filters">
+                <button class="filter-btn active" data-category="all">Wszystkie</button>
+                <button class="filter-btn" data-category="drzewa">Drzewa</button>
+                <button class="filter-btn" data-category="krzewy">Krzewy</button>
+                <button class="filter-btn" data-category="zioła">Zioła</button>
+                <button class="filter-btn" data-category="grzyby">Grzyby</button>
+                <button class="filter-btn" data-category="kwiaty">Kwiaty</button>
+            </div>
+        </div>
+    </section>
+
+    <main id="plants" class="main">
+        <div class="container">
+            <div class="results-info">
+                <span id="resultsCount">Wyświetlane: 0 z 0</span>
+            </div>
+            <div id="plantsGrid" class="plants-grid">
+            </div>
+        </div>
+    </main>
+
+    <div id="plantModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-header">
+                <img id="modalImage" class="modal-image" src="" alt="">
+            </div>
+            <div class="modal-body">
+                <h2 id="modalName" class="modal-title"></h2>
+                <p id="modalScientific" class="modal-scientific"></p>
+                <span id="modalCategory" class="modal-category"></span>
+                <p id="modalDescription" class="modal-description"></p>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <strong>🌳 Siedlisko:</strong>
+                        <span id="modalHabitat"></span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>📅 Sezon:</strong>
+                        <span id="modalSeason"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Leśny Herbarium</h3>
+                    <p class="footer-text">Interaktywny katalog roślin leśnych</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Kategorie</h4>
+                    <ul class="footer-list">
+                        <li><a href="#" class="footer-link">Drzewa</a></li>
+                        <li><a href="#" class="footer-link">Krzewy</a></li>
+                        <li><a href="#" class="footer-link">Zioła</a></li>
+                        <li><a href="#" class="footer-link">Grzyby</a></li>
+                        <li><a href="#" class="footer-link">Kwiaty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Informacje</h4>
+                    <p class="footer-text">Projekt edukacyjny prezentujący florę lasów Polski.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Leśny Herbarium. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollTop" class="scroll-top">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
