@@ -17,42 +17,42 @@ Strona typu portfolio prezentująca katalog roślin leśnych w formie interaktyw
 
 ## Sekcja 1: Struktura HTML i dane
 
-- [x] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi roślin (min. 12 pozycji) ✓
-- [x] 1.2 Utworzyć `index.html` z sekcjami: header, hero, karty roślin, footer ✓
-- [x] 1.3 Dodać strukturę nawigacji (logo, filtry kategorii, wyszukiwarka) ✓
-- [x] 1.4 Dodać modal dla szczegółów rośliny (ukryty domyślnie) ✓
+- [x] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi roślin (min. 12 pozycji) 
+- [x] 1.2 Utworzyć `index.html` z sekcjami: header, hero, karty roślin, footer 
+- [x] 1.3 Dodać strukturę nawigacji (logo, filtry kategorii, wyszukiwarka) 
+- [x] 1.4 Dodać modal dla szczegółów rośliny (ukryty domyślnie) 
 
 ### Weryfikacja Sekcji 1
-- [x] 1.5 Otworzyć `index.html` w przeglądarce — struktura strony widoczna
-- [x] 1.6 Sprawdzić konsolę — brak błędów
+- [ ] 1.5 Otworzyć `index.html` w przeglądarce — struktura strony widoczna
+- [ ] 1.6 Sprawdzić konsolę — brak błędów
 
 ---
 
 ## Sekcja 2: Style CSS i design
 
-- [x] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego) ✓
-- [x] 2.2 Zaimplementować fonty (np. Montserrat dla nagłówków, Open Sans dla tekstu) ✓
-- [x] 2.3 Stylizować header z efektem glassmorphism ✓
-- [x] 2.4 Utworzyć responsywny grid dla kart roślin (1 kolumna mobile, 2 tablet, 3-4 desktop) ✓
-- [x] 2.5 Dodać hover efekty na kartach (transform: scale, box-shadow) ✓
-- [x] 2.6 Stylizować przyciski filtrów z aktywnym stanem ✓
-- [x] 2.7 Dodać animacje wejścia dla kart (fade-in przy load) ✓
+- [x] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego) 
+- [x] 2.2 Zaimplementować fonty (np. Montserrat dla nagłówków, Open Sans dla tekstu) 
+- [ ] 2.3 Stylizować header z efektem glassmorphism 
+- [ ] 2.4 Utworzyć responsywny grid dla kart roślin (1 kolumna mobile, 2 tablet, 3-4 desktop) 
+- [ ] 2.5 Dodać hover efekty na kartach (transform: scale, box-shadow) 
+- [ ] 2.6 Stylizować przyciski filtrów z aktywnym stanem 
+- [ ] 2.7 Dodać animacje wejścia dla kart (fade-in przy load) 
 
 ### Weryfikacja Sekcji 2
-- [x] 2.8 Sprawdzić wygląd na różnych rozdzielczościach (375px, 768px, 1280px)
-- [x] 2.9 Zweryfikować czytelność tekstu i kontrast kolorów
+- [ ] 2.8 Sprawdzić wygląd na różnych rozdzielczościach (375px, 768px, 1280px)
+- [ ] 2.9 Zweryfikować czytelność tekstu i kontrast kolorów
 
 ---
 
 ## Sekcja 3: JavaScript — logika interakcji
 
-- [x] 3.1 Zaimportować dane z `plants.json` do zmiennej ✓
-- [x] 3.2 Zaimplementować funkcję renderującą karty roślin ✓
-- [ ] 3.3 Dodać filtrowanie po kategorii (drzewa, krzewy, zioła, grzyby, kwiaty)
-- [ ] 3.4 Zaimplementować wyszukiwarkę tekstową (filtrowanie po nazwie)
-- [ ] 3.5 Dodać otwieranie modala ze szczegółami po kliknięciu karty
-- [ ] 3.6 Dodać zamykanie modala (przycisk X, kliknięcie poza modalem, Esc)
-- [ ] 3.7 Dodać animację ładowania kart (skeleton lub spinner)
+- [x] 3.1 Zaimportować dane z `plants.json` do zmiennej 
+- [x] 3.2 Zaimplementować funkcję renderującą karty roślin 
+- [x] 3.3 Dodać filtrowanie po kategorii (drzewa, krzewy, zioła, grzyby, kwiaty)
+- [x] 3.4 Zaimplementować wyszukiwarkę tekstową (filtrowanie po nazwie)
+- [x] 3.5 Dodać otwieranie modala ze szczegółami po kliknięciu karty
+- [x] 3.6 Dodać zamykanie modala (przycisk X, kliknięcie poza modalem, Esc)
+- [x] 3.7 Dodać animację ładowania kart (skeleton lub spinner)
 
 ### Weryfikacja Sekcji 3
 - [ ] 3.8 Kliknąć filtry — karty aktualizują się poprawnie

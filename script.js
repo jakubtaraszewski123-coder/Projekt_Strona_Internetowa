@@ -1,289 +1,257 @@
-const plantsData = [
-  {
-    "id": 1,
-    "name": "Dąb Szypułkowy",
-    "scientificName": "Quercus robur",
-    "category": "drzewa",
-    "description": "Okazałe drzewo liściaste osiągające wysokość do 40 m. Posiada gruby pień pokryty ciemnoszarą korą i rozłożystą koronę. Liście są klapowane, z wydłużonymi łatkami.",
-    "habitat": "Lasy liściaste i mieszane, dąbrowy, łęgi",
-    "season": "Cały rok",
-    "image": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400"
-  },
-  {
-    "id": 2,
-    "name": "Grusza Polna",
-    "scientificName": "Pyrus pyraster",
-    "category": "drzewa",
-    "description": "Dziki przodek gruszy domowej. Dorasta do 20 m wysokości. Kwitnie białymi kwiatami wczesną wiosną. Owoce są małe, twarde i aromatyczne.",
-    "habitat": "Zarośla, skraje lasów, ciepłe zbocza",
-    "season": "Wiosna (kwitnienie), Jesień (owocowanie)",
-    "image": "https://images.unsplash.com/photo-1510924751313-c76f70ac0c26?w=400"
-  },
-  {
-    "id": 3,
-    "name": "Leszczyna Pospolita",
-    "scientificName": "Corylus avellana",
-    "category": "krzewy",
-    "description": "Krzew o wysokości 3-8 m. Ma szeroko rozpostarte gałęzie i okrągławe liście. Kwitnie wczesną wiosną przed rozwojem liści. Owocuje orzechami laskowymi.",
-    "habitat": "Zarośla, skraje lasów, polany",
-    "season": "Wiosna (kwitnienie), Jesień (owocowanie)",
-    "image": "https://images.unsplash.com/photo-1606964481137-61d34a1ba50c?w=400"
-  },
-  {
-    "id": 4,
-    "name": "Kalina Koralowa",
-    "scientificName": "Viburnum opulus",
-    "category": "krzewy",
-    "description": "Krzew o wysokości 1-4 m o charakterystycznych kulistych kwiatostanach z białymi kwiatami. Jesienią wydaje czerwone, błyszczące owoce zebrane w baldachy.",
-    "habitat": "Wilgotne lasy, zarośla nad wodami, łęgi",
-    "season": "Wiosna (kwitnienie), Jesień (owocowanie)",
-    "image": "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=400"
-  },
-  {
-    "id": 5,
-    "name": "Borówka Czarna",
-    "scientificName": "Vaccinium myrtillus",
-    "category": "krzewy",
-    "description": "Niski krzew (15-40 cm) o jajowatych liściach i dzwonkowatych, różowawych kwiatach. Owocuje ciemnogranatowymi, jadalnymi jagodami o słodkim smaku.",
-    "habitat": "Bory iglaste, wrzosowiska, górskie zbocza",
-    "season": "Wiosna (kwitnienie), Lato (owocowanie)",
-    "image": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400"
-  },
-  {
-    "id": 6,
-    "name": "Podbiał Pospolity",
-    "scientificName": "Tussilago farfara",
-    "category": "zioła",
-    "description": "Bylina kwitnąca wczesną wiosną żółtymi kwiatami przed rozwojem liści. Liście pojawiają się po przekwitnięciu. Ma właściwości lecznicze przy kaszlu i stanach zapalnych.",
-    "habitat": "Wilgotne miejsca, przydroża, skarpy, brzegi wód",
-    "season": "Wczesna wiosna",
-    "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=400"
-  },
-  {
-    "id": 7,
-    "name": "Pokrzywa Zwyczajna",
-    "scientificName": "Urtica dioica",
-    "category": "zioła",
-    "description": "Wysoka bylina (60-150 cm) pokryta parzącymi włoskami. Liście są jajowate, grubo ząbkowane. Ma właściwości lecznicze i jest bogata w witaminy.",
-    "habitat": "Zarośla, przydroża, brzegi lasów, miejsca azotowe",
-    "season": "Wiosna - Jesień",
-    "image": "https://images.unsplash.com/photo-1600611835656-9c5c5a6b5c95?w=400"
-  },
-  {
-    "id": 8,
-    "name": "Majeranek Zwyczajny",
-    "scientificName": "Origanum vulgare",
-    "category": "zioła",
-    "description": "Bylina o wysokości 30-80 cm o aromatycznych liściach i różowofioletowych kwiatach. Popularna przyprawa kuchenna i roślina lecznicza.",
-    "habitat": "Suche łąki, skraje lasów, zbocza",
-    "season": "Lato",
-    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400"
-  },
-  {
-    "id": 9,
-    "name": "Borowik Szlachetny",
-    "scientificName": "Boletus edulis",
-    "category": "grzyby",
-    "description": "Jeden z najcenniejszych grzybów jadalnych. Ma masywny, bulwiasty trzon i kapelusz w kolorach od jasno- do ciemnobrązowego. Miąższ jest biały, bez zmiany koloru po przecięciu.",
-    "habitat": "Lasy iglaste i liściaste, szczególnie pod dębami, bukami, sosnami",
-    "season": "Lato - Jesień",
-    "image": "https://images.unsplash.com/photo-1504545102780-26774c1bb073?w=400"
-  },
-  {
-    "id": 10,
-    "name": "Maślak Zwyczajny",
-    "scientificName": "Suillus luteus",
-    "category": "grzyby",
-    "description": "Grzyb jadalny o żółtopomarańczowym kapeluszu pokrytym śluzowatą skórką. Rurki pod kapeluszem są żółte. Często spotykany w młodych lasach sosnowych.",
-    "habitat": "Lasy sosnowe, szczególnie młode nasadzenia",
-    "season": "Lato - Jesień",
-    "image": "https://images.unsplash.com/photo-1564894809611-1742fc40ed80?w=400"
-  },
-  {
-    "id": 11,
-    "name": "Koniec Zwyczajny",
-    "scientificName": "Galerina marginata",
-    "category": "grzyby",
-    "description": "Mały grzyb o brązowym kapeluszu i pierścieniu na trzonie. UWAGA: jest silnie trujący, zawiera amatoksyny! Rośnie na butwiejącym drewnie iglastym i liściastym.",
-    "habitat": "Butwiejące drewno iglaste i liściaste",
-    "season": "Jesień",
-    "image": "https://images.unsplash.com/photo-1558562842-1e9a2e1b45ca?w=400"
-  },
-  {
-    "id": 12,
-    "name": "Fiołek Pospolity",
-    "scientificName": "Viola odorata",
-    "category": "kwiaty",
-    "description": "Niska bylina o sercowatych liściach i pachnących fioletowych kwiatach. Kwitnie wczesną wiosną. Liście i kwiaty są jadalne, używane do dekoracji i aromatyzowania.",
-    "habitat": "Zarośla, skraje lasów, parki",
-    "season": "Wczesna wiosna",
-    "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400"
-  },
-  {
-    "id": 13,
-    "name": "Konwalia Majowa",
-    "scientificName": "Convallaria majalis",
-    "category": "kwiaty",
-    "description": "Kreatywna bylina o charakterystycznych dzwonkowatych, białych, pachnących kwiatach zebranych w grono. Liście są eliptyczne, zaostrzone. UWAGA: roślina silnie trująca!",
-    "habitat": "Lasy liściaste i mieszane, zarośla",
-    "season": "Wiosna",
-    "image": "https://images.unsplash.com/photo-1521479695631-5a07d00b92ce?w=400"
-  },
-  {
-    "id": 14,
-    "name": "Stokrotka Pospolita",
-    "scientificName": "Bellis perennis",
-    "category": "kwiaty",
-    "description": "Niska bylina o drobnych, biało-różowych kwiatach z żółtym środkiem. Kwitnie od wiosny do jesieni. Jest rośliną wskaźnikową wapnia w glebie.",
-    "habitat": "Łąki, trawniki, pastwiska, skraje dróg",
-    "season": "Wiosna - Jesień",
-    "image": "https://images.unsplash.com/photo-1593176895519-2b8d3b9c6bb5?w=400"
-  },
-  {
-    "id": 15,
-    "name": "Buk Pospolity",
-    "scientificName": "Fagus sylvatica",
-    "category": "drzewa",
-    "description": "Okazałe drzewo liściaste dorastające do 40-50 m wysokości. Ma gładką, szarą korę i eliptyczne liście z falistym brzegiem. Wydaje jadalne owoce - bukiew.",
-    "habitat": "Lasy liściaste i mieszane, buczyny",
-    "season": "Cały rok",
-    "image": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=400"
+/* ============================================
+   Leśny Herbarium — Logika JavaScript
+   ============================================ */
+
+(function () {
+  'use strict';
+
+  /* --- 3.1 Import danych --- */
+  let plantsData = [];
+  let currentCategory = 'all';
+  let currentSearch = '';
+
+  async function loadPlantsData() {
+    try {
+      const response = await fetch('data/plants.json');
+      if (!response.ok) {
+        throw new Error('Nie udało się załadować danych roślin');
+      }
+      plantsData = await response.json();
+    } catch (error) {
+      console.error('Błąd ładowania danych:', error);
+      document.getElementById('plants-grid').innerHTML =
+        '<p style="text-align:center; padding: 2rem; color: var(--bark-brown);">Nie udało się załadować danych. Odśwież stronę.</p>';
+    }
   }
-];
 
-let plants = [];
-let currentCategory = 'all';
-let searchTerm = '';
+  /* --- Emoji mapping per category --- */
+  const categoryEmoji = {
+    drzewa: '🌳',
+    krzewy: '🌿',
+    kwiaty: '🌸',
+    grzyby: '🍄',
+    zioła: '🌱',
+  };
 
-document.addEventListener('DOMContentLoaded', () => {
-  plants = [...plantsData];
-  renderPlants();
-  setupFilters();
-  setupSearch();
-  setupModal();
-  setupScrollTop();
-});
+  /* --- 3.2 Renderowanie kart --- */
+  function renderPlants(plants) {
+    const grid = document.getElementById('plants-grid');
+    const noResults = document.getElementById('no-results');
+    const counter = document.getElementById('results-counter');
 
-function renderPlants() {
-  const grid = document.getElementById('plantsGrid');
-  const resultsCount = document.getElementById('resultsCount');
-  
-  const filtered = plants.filter(plant => {
-    const matchesCategory = currentCategory === 'all' || plant.category === currentCategory;
-    const matchesSearch = searchTerm === '' || 
-      plant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      plant.scientificName.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-  
-  grid.innerHTML = filtered.map((plant, index) => `
-    <div class="plant-card" data-id="${plant.id}" style="animation-delay: ${index * 0.1}s">
-      <img class="plant-card-image" src="${plant.image}" alt="${plant.name}" loading="lazy">
-      <div class="plant-card-body">
-        <h3 class="plant-card-name">${plant.name}</h3>
-        <p class="plant-card-scientific">${plant.scientificName}</p>
-        <span class="plant-card-category">${plant.category}</span>
-      </div>
-    </div>
-  `).join('');
-  
-  resultsCount.textContent = `Wyświetlane: ${filtered.length} z ${plants.length}`;
-  
-  grid.querySelectorAll('.plant-card').forEach(card => {
-    card.addEventListener('click', () => openModal(parseInt(card.dataset.id)));
-  });
-}
+    grid.innerHTML = '';
 
-function setupFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentCategory = btn.dataset.category;
-      renderPlants();
+    if (plants.length === 0) {
+      noResults.hidden = false;
+      counter.textContent = 'Wyświetlane: 0 z ' + plantsData.length;
+      return;
+    }
+
+    noResults.hidden = true;
+    counter.textContent = 'Wyświetlane: ' + plants.length + ' z ' + plantsData.length;
+
+    plants.forEach(function (plant, index) {
+      const card = document.createElement('article');
+      card.className = 'plant-card';
+      card.setAttribute('data-id', plant.id);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', 'Szczegóły: ' + plant.name);
+      card.style.animationDelay = (index * 0.05) + 's';
+
+      card.innerHTML =
+        '<div class="plant-card-image">' +
+          '<span>' + (categoryEmoji[plant.category] || '🌲') + '</span>' +
+        '</div>' +
+        '<div class="plant-card-body">' +
+          '<h3 class="plant-card-name">' + escapeHtml(plant.name) + '</h3>' +
+          '<p class="plant-card-latin">' + escapeHtml(plant.latinName) + '</p>' +
+          '<span class="plant-card-category">' + escapeHtml(plant.category) + '</span>' +
+        '</div>';
+
+      card.addEventListener('click', function () {
+        openModal(plant);
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(plant);
+        }
+      });
+
+      grid.appendChild(card);
     });
-  });
-}
+  }
 
-function setupSearch() {
-  const searchInput = document.getElementById('searchInput');
-  const searchBtn = document.querySelector('.search-btn');
-  
-  searchInput.addEventListener('input', (e) => {
-    searchTerm = e.target.value;
-    renderPlants();
-  });
-  
-  searchBtn.addEventListener('click', () => {
-    searchTerm = searchInput.value;
-    renderPlants();
-  });
-  
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      searchTerm = searchInput.value;
-      renderPlants();
-    }
-  });
-}
+  /* --- 3.3 Filtrowanie po kategorii --- */
+  function filterByCategory(category) {
+    currentCategory = category;
+    applyFilters();
+  }
 
-function setupModal() {
-  const modal = document.getElementById('plantModal');
-  const closeBtn = document.getElementById('modalClose');
-  
-  closeBtn.addEventListener('click', closeModal);
-  
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-}
+  /* --- 3.4 Wyszukiwarka tekstowa --- */
+  function filterBySearch(query) {
+    currentSearch = query.toLowerCase().trim();
+    applyFilters();
+  }
 
-function openModal(plantId) {
-  const plant = plants.find(p => p.id === plantId);
-  if (!plant) return;
-  
-  const modal = document.getElementById('plantModal');
-  
-  document.getElementById('modalImage').src = plant.image;
-  document.getElementById('modalName').textContent = plant.name;
-  document.getElementById('modalScientific').textContent = plant.scientificName;
-  document.getElementById('modalCategory').textContent = plant.category;
-  document.getElementById('modalDescription').textContent = plant.description;
-  document.getElementById('modalHabitat').textContent = plant.habitat;
-  document.getElementById('modalSeason').textContent = plant.season;
-  
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
+  /* --- Apply both filters together --- */
+  function applyFilters() {
+    var filtered = plantsData.filter(function (plant) {
+      var matchesCategory = currentCategory === 'all' || plant.category === currentCategory;
+      var matchesSearch =
+        currentSearch === '' ||
+        plant.name.toLowerCase().indexOf(currentSearch) !== -1 ||
+        plant.latinName.toLowerCase().indexOf(currentSearch) !== -1;
+      return matchesCategory && matchesSearch;
+    });
+    renderPlants(filtered);
+  }
 
-function closeModal() {
-  const modal = document.getElementById('plantModal');
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
+  /* --- Helper: escape HTML --- */
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+  }
 
-function setupScrollTop() {
-  const scrollTopBtn = document.getElementById('scrollTop');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
-    }
-  });
-  
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
+  /* --- 3.5 Modal --- */
+  function openModal(plant) {
+    var overlay = document.getElementById('modal-overlay');
+    var modal = document.getElementById('plant-modal');
+
+    document.getElementById('modal-title').textContent = plant.name;
+    document.getElementById('modal-latin-name').textContent = plant.latinName;
+    document.getElementById('modal-description').textContent = plant.description;
+    document.getElementById('modal-height').textContent = plant.height;
+    document.getElementById('modal-flowering').textContent = plant.flowering;
+    document.getElementById('modal-habitat').textContent = plant.habitat;
+    document.getElementById('modal-layer').textContent = plant.layer;
+    document.getElementById('modal-fun-fact').textContent = plant.funFact;
+    document.getElementById('modal-category').textContent = plant.category;
+    document.getElementById('modal-image').textContent = categoryEmoji[plant.category] || '🌲';
+
+    overlay.hidden = false;
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    document.getElementById('modal-close').focus();
+  }
+
+  function closeModal() {
+    var overlay = document.getElementById('modal-overlay');
+    overlay.hidden = true;
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  /* --- Navbar scroll behavior --- */
+  function initNavbarScroll() {
+    var header = document.getElementById('site-header');
+    var scrollThreshold = 50;
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > scrollThreshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+
+  /* --- Hamburger menu --- */
+  function initHamburger() {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.classList.contains('nav-link')) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* --- Scroll to top --- */
+  function initScrollToTop() {
+    var btn = document.getElementById('scroll-to-top');
+    var threshold = 400;
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > threshold) {
+        btn.hidden = false;
+      } else {
+        btn.hidden = true;
+      }
+    });
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* --- Initialization --- */
+  function init() {
+    loadPlantsData().then(function () {
+      renderPlants(plantsData);
+
+      document.getElementById('plants-grid').querySelectorAll('.skeleton-card').forEach(function (el) {
+        el.remove();
+      });
+    });
+
+    /* Filter buttons */
+    document.querySelectorAll('.filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-btn').forEach(function (b) {
+          b.classList.remove('active');
+        });
+        btn.classList.add('active');
+        filterByCategory(btn.getAttribute('data-category'));
+      });
+    });
+
+    /* Search input */
+    var searchInput = document.getElementById('search-input');
+    var debounceTimer;
+    searchInput.addEventListener('input', function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () {
+        filterBySearch(searchInput.value);
+      }, 200);
+    });
+
+    /* Modal close */
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', function (e) {
+      if (e.target === e.currentTarget) {
+        closeModal();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !document.getElementById('modal-overlay').hidden) {
+        closeModal();
+      }
+    });
+
+    /* Init UI behaviors */
+    initNavbarScroll();
+    initHamburger();
+    initScrollToTop();
+  }
+
+  /* Run on DOM ready */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
