@@ -7,7 +7,7 @@
     "layer": "korona",
     "description": "Najważniejsze drzewo polskich lasów. Może żyć ponad 1000 lat i osiągać 40 metrów wysokości. Jego żołędzie stanowią pokarm dla dzików, saren i licznych gatunków ptaków.",
     "funFact": "Jeden duży dąb transportuje nawet 400 litrów wody dziennie z gleby do liści.",
-    "image": "img/sections/dab-szypulkowy.jpg",
+    "image": "https://internetowyogrod.pl/media/img/b/md/dab-szypulkowy-quercus-robur-2_800x450.webp",
     "height": "25-40 m",
     "flowering": "kwiecień-maj",
     "habitat": "Lasy mieszane, żyzne siedliska"
@@ -20,7 +20,7 @@
     "layer": "korona",
     "description": "Pionierskie drzewo zasiedlające pierwsze nieużytki. Charakterystyczna biała kora z czarnymi pręgami sprawia, że jest łatwo rozpoznawalna nawet zimą.",
     "funFact": "Kora brzozy zawiera betuline — substancję o właściwościach antybakteryjnych i przeciwzapalnych.",
-    "image": "img/sections/brzoza-brodawkowata.jpg",
+    "image": "https://www.drzewa.nk4.netmark.pl/zasoby/atlas/brzoza/brzoza_brodawkowata/brzoza_brodawkowata_000_s.jpg",
     "height": "15-25 m",
     "flowering": "kwiecień-maj",
     "habitat": "Suche lasy, polany, brzegi dróg"
@@ -33,7 +33,7 @@
     "layer": "korona",
     "description": "Tworzy zwarte drzewostany z gęstym baldachimem, który silnie zacienia runo leśne. Jego liście jesienią przebarwiają się na rudo-złoty kolor.",
     "funFact": "Młody buk może przetrwać w cieniu innych drzew nawet 100 lat, czekając na światło.",
-    "image": "img/sections/buk-zwyczajny.jpg",
+    "image": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&q=80",
     "height": "25-35 m",
     "flowering": "maj",
     "habitat": "Żyzne buczyny, górskie lasy mieszane"
@@ -46,7 +46,7 @@
     "layer": "podszyt",
     "description": "Najpospolitszy krzew podszytu w polskich lasach. Jej orzechy są wartościowym pokarmem dla wielu gatunków zwierząt — od wiewiórek po kosy.",
     "funFact": "Leszczyna kwitnie bardzo wcześnie — już w lutym i marcu, zanim rozwiną się liście.",
-    "image": "img/sections/leszczyna.jpg",
+    "image": "https://www.sadowniczy.pl/data/include/img/news/1582120442.jpg",
     "height": "3-6 m",
     "flowering": "luty-marzec",
     "habitat": "Lasy liściaste, brzegi lasów, zarośla"
@@ -59,7 +59,7 @@
     "layer": "podszyt",
     "description": "Krzew rosnący na wilgotnych siedliskach, często w pobliżu cieków wodnych. Jej czarne owoce zjadają ptaki, ale dla człowieka są trujące.",
     "funFact": "Drewno kruszyny jest cenione w produkcji węgla drzewnego najwyższej jakości — używanego m.in. w prochu strzelniczym.",
-    "image": "img/sections/kruszyna.jpg",
+    "image": "https://www.hellozdrowie.pl/wp-content/uploads/2023/01/adobestock_401909272-kopia-1536x890.jpg",
     "height": "2-4 m",
     "flowering": "czerwiec-lipiec",
     "habitat": "Łęgi, bagna, wilgotne lasy olchowe"
@@ -72,7 +72,7 @@
     "layer": "runo",
     "description": "Zimozielona paproć często spotykana na pniach drzew i skalistych podłożach. Jej kłącza mają słodkawy smak i były dawniej używane jako lek na kaszel.",
     "funFact": "Paprotka rozmnaża się przez zarodniki znajdujące się na spodniej stronie liści — nie wydaje kwiatów ani nasion.",
-    "image": "img/sections/paprotka.jpg",
+    "image": "https://www.medianauka.pl/biologia/grafika/rosliny/paprotka-zwyczajna.jpg",
     "height": "0.1-0.3 m",
     "flowering": "brak (paproć)",
     "habitat": "Pnie drzew, skały, wilgotne lasy"
@@ -85,7 +85,7 @@
     "layer": "runo",
     "description": "Delikatna roślina runa leśnego o charakterystycznych białych, pachnących kwiatach. Cała roślina jest silnie trująca — zawiera glikozydy nasercowe.",
     "funFact": "Zapach konwalii jest tak intensywny, że olejek eteryczny z jej kwiatów jest wykorzystywany w przemyśle perfumeryjnym.",
-    "image": "img/sections/konwalia.jpg",
+    "image": "https://www.futuregardens.pl/media/products/b5d60e7a8c855fbc724682da1c842188/images/thumbnail/large_konwalia-2.jpg?lm=1708620015",
     "height": "0.15-0.25 m",
     "flowering": "maj-czerwiec",
     "habitat": "Lasy liściaste, especially buczyny i grądy"
@@ -98,7 +98,7 @@
     "layer": "runo",
     "description": "Niski krzew runa leśnego, którego ciemne owoce są cenionym źródłem witamin i antyoksydantów. Liście borówki mają właściwości lecznicze.",
     "funFact": "Owoce borówki barwią usta i język na ciemnoniebiesko — to naturalny barwnik anthocyjanowy.",
-    "image": "img/sections/borowka-czarna.jpg",
+    "image": "https://pf.nice-cdn.com/upload/image/product/large/default/magic-garden-seeds-nasiona-bio-borowka-czarna-2144975-pl.webp",
     "height": "0.15-0.4 m",
     "flowering": "maj-czerwiec",
     "habitat": "Lasy iglaste, bory sosnowe, kwaśne gleby"
@@ -111,7 +111,7 @@
     "layer": "runo",
     "description": "Roślina charakterystyczna dla cienistych, wilgotnych lasów. Jej trójlistne liście mają kwaśny smak dzięki zawartości kwasu szczawiowego.",
     "funFact": "Liście szczawiku składają się na noc — to tzw. 'sen roślin', który chroni przed utratą ciepła.",
-    "image": "img/sections/szczawik.jpg",
+    "image": "https://static.ktomalek.pl/blog/zdjecie/szczawik-zajeczy.jpg?size=bl",
     "height": "0.05-0.15 m",
     "flowering": "kwiecień-czerwiec",
     "habitat": "Cieniste lasy liściaste i mieszane, wilgotne gleby"
@@ -124,7 +124,7 @@
     "layer": "runo",
     "description": "Jeden z najbardziej rozpoznawalnych grzybów leśnych — czerwony kapelusz z białymi plamkami. Silnie halucynogenny i trujący dla człowieka.",
     "funFact": "Muchomor czerwony zawiera kwas ibotenowy i muscymol — substancje działające psychoaktywnie na układ nerwowy.",
-    "image": "img/sections/muchomor-czerwony.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg",
     "height": "0.08-0.2 m (kapelusz)",
     "flowering": "lipiec-październik (owocniki)",
     "habitat": "Lasy iglaste i mieszane, symbioza z brzozami i sosnami"
@@ -137,7 +137,7 @@
     "layer": "runo",
     "description": "Jeden z najbardziej charakterystycznych grzybów leśnych o niecodziennym kształcie i intensywnie nieprzyjemnym zapachu, który przyciąga owady.",
     "funFact": "Zapach sromotnika przypomina gnijące mięso — to celowa strategia ewolucyjna mająca przyciągać muchy, które roznoszą zarodniki.",
-    "image": "img/sections/sromotnik.jpg",
+    "image": "https://mamogrodek.pl/wp-content/uploads/2024/08/Poniabude-4-930x620.jpg",
     "height": "0.1-0.2 m",
     "flowering": "lipiec-październik (owocniki)",
     "habitat": "Lasy liściaste i mieszane, gleby bogate w próchnicę"
@@ -150,7 +150,7 @@
     "layer": "runo",
     "description": "Jadalny grzyb mykoryzowy żyjący w symbiozie z brzozami. Charakterystyczny czerwono-brązowy kapelusz i ciemne łuski na trzonie.",
     "funFact": "Grzybnia kozaka może mieć ponad 500 lat i rozciągać się na powierzchni kilku hektarów lasu.",
-    "image": "img/sections/kozak-czerwony.jpg",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Leccinum_aurantiacum_G4.JPG",
     "height": "0.05-0.15 m",
     "flowering": "czerwiec-październik (owocniki)",
     "habitat": "Lasy brzozowe i mieszane, kwaśne gleby"
@@ -163,7 +163,7 @@
     "layer": "runo",
     "description": "Mchy tworzą zwarty, zielony dywan na dnie lasu, magazynując ogromne ilości wody. Pełnią kluczową rolę w obiegu wody i ochronie gleby przed erozją.",
     "funFact": "Jeden hektar mchu może zmagazynować do 30 000 litrów wody — działają jak naturalna gąbka leśna.",
-    "image": "img/sections/mchy.jpg",
+    "image": "https://thumbs.dreamstime.com/b/mchy-w-lesie-i-suche-licie-rolinno-lena-169682155.jpg",
     "height": "0.02-0.15 m",
     "flowering": "brak (rośliny zarodnikowe)",
     "habitat": "Wilgotne fragmenty lasu, pnie drzew, kamienie"
@@ -176,7 +176,7 @@
     "layer": "podszyt",
     "description": "Krzew o pięknych różowych kwiatach i czerwonych owocach (owoce dzikiej róży) bogatych w witaminę C. Występuje na brzegach lasów i polanach.",
     "funFact": "Owoce dzikiej róży mają nawet 50 razy więcej witaminy C niż cytryna — to naturalna 'bomb witaminowa'.",
-    "image": "img/sections/dzika-roza.jpg",
+    "image": "https://i.iplsc.com/000LU6UE180CSXD0-C323-F4.webp",
     "height": "1-3 m",
     "flowering": "czerwiec-lipiec",
     "habitat": "Brzegi lasów, polany, zarośla, nasłonecznione zbocza"
@@ -189,7 +189,7 @@
     "layer": "runo",
     "description": "Niska bylina o płożących się pędach i drobnych fioletowych kwiatach. Rośnie w wilgotnych, cienistych miejscach. Dawniej używana jako lek na kaszel i do aromatyzowania piwa.",
     "funFact": "Bluszczyk był stosowany w piwowarstwie zanim pojawił się chmiel — nadawał piwu goryczki i działał konserwująco.",
-    "image": "img/sections/bluszczyk.jpg",
+    "image": "https://www.medianauka.pl/biologia/grafika/rosliny/bluszczyk-kurdybanek.jpg",
     "height": "0.1-0.3 m",
     "flowering": "kwiecień-czerwiec",
     "habitat": "Wilgotne lasy liściaste, zarośla, brzegi dróg"

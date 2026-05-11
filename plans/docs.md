@@ -1,4 +1,4 @@
-# 🌲 Ścieżka Natury — Dokumentacja Projektu
+# 🌲 Leśny Herbarium — Dokumentacja Projektu
 
 ## Spis Treści
 
@@ -10,32 +10,38 @@
 6. [Sekcje Strony — Szczegółowe Opisy](#sekcje-strony)
 7. [Nawigacja](#nawigacja)
 8. [Efekty Wizualne i Techniczne](#efekty-wizualne-i-techniczne)
-9. [Design System](#design-system)
-10. [Responsywność](#responsywność)
-11. [Accessibility](#accessibility)
-12. [Performance](#performance)
-13. [Zasoby i Źródła](#zasoby-i-źródła)
-14. [Plan Implementacji](#plan-implementacji)
-15. [Deploy i Hosting](#deploy-i-hosting)
+9. [Modale](#modale)
+10. [Design System](#design-system)
+11. [Responsywność](#responsywność)
+12. [Accessibility](#accessibility)
+13. [Performance](#performance)
+14. [Struktura Danych](#struktura-danych)
+15. [Zasoby i Źródła](#zasoby-i-źródła)
+16. [Deploy i Hosting](#deploy-i-hosting)
 
 ---
 
 ## Opis Projektu
 
-**Ścieżka Natury** to edukacyjna, jednostronicowa witryna internetowa z efektem parallax scrolling, która prowadzi użytkownika przez kolejne warstwy ekosystemu leśnego — od gleby pod stopami, przez ściółkę i runo leśne, podszyt i potężne pnie drzew, aż po korony drzew i otwarte niebo.
+**Leśny Herbarium** to edukacyjna, jednostronicowa witryna internetowa prezentująca interaktywny katalog roślin leśnych oraz ekosystem lasu. Strona łączy **edukację przyrodniczą** z **nowoczesnym web designem**, oferując:
 
-Strona łączy **edukację przyrodniczą** z **nowoczesnym web designem**, tworząc immersyjne doświadczenie scrollowania przez las od dołu do góry. Każda warstwa lasu stanowi osobną sekcję wizualną z unikalnymi treściami, animacjami i efektami parallax.
+- **Interaktywny katalog roślin** z filtrami kategorii i wyszukiwarką
+- **Mapę warstw ekosystemu leśnego** — klikalne warstwy od gleby po niebo
+- **Sekcję ciekawostek** ("Kliknij i poznaj") z kategoriami i mini-modalami
+- **Animowane statystyki** o polskich lasach
+- **Efekt parallax** w sekcji Hero
+- **Efekt forest particles** (pyłki/pyłki kwiatowe) podczas scrollowania
 
-**Typ projektu:** Strona informacyjna / edukacyjna (one-page)
+**Typ projektu:** Strona informacyjna / edukacyjna / katalog (one-page)
 **Tematyka:** Rośliny, las, natura, ekosystem leśny
-**Interaktywność:** Parallax scrolling, scroll-triggered animations, smooth navigation
+**Interaktywność:** Parallax, filtry, wyszukiwarka, modale, animacje scroll-triggered, canvas particles
 
 ---
 
 ## Cel i Grupa Docelowa
 
 ### Cele projektu
-- Zaprezentowanie ekosystemu lasu w atrakcyjnej, interaktywnej formie
+- Zaprezentowanie ekosystemu lasu i jego mieszkańców w interaktywnej formie
 - Nauka frontendowych technologii (HTML/CSS/JS) poprzez praktyczny projekt
 - Stworzenie efektownego elementu do portfolio webdevowego
 - Edukacja przyrodnicza w przystępnej, wizualnej formie
@@ -56,15 +62,18 @@ Strona łączy **edukację przyrodniczą** z **nowoczesnym web designem**, tworz
 
 | Technologia | Zastosowanie | Wersja |
 |---|---|---|
-| HTML5 | Struktura semantyczna | - |
-| CSS3 | Stylowanie, animacje, parallax | - |
-| Vanilla JavaScript | Interaktywność, Intersection Observer, scroll events | ES6+ |
-| Google Fonts | Typografia | - |
+| HTML5 | Struktura semantyczna, ARIA attributes | - |
+| CSS3 | Stylowanie, animacje, parallax, zmienne CSS | - |
+| Vanilla JavaScript | Interaktywność, filtry, wyszukiwarka, modale, canvas particles, localStorage | ES6+ (IIFE) |
+| Google Fonts | Typografia (Playfair Display + Lato) | - |
+| JSON | Dane roślin (plants.json) i ciekawostek (facts.json) | - |
+| Canvas API | Efekt forest particles (pyłki podczas scrolla) | - |
+| localStorage API | Section Memory — zapamiętywanie pozycji scrolla | - |
 
 ### Dlaczego zero frameworków?
 - **Prostota** — brak konfiguracji, bundlerów, node_modules
 - **Nauka fundamentów** — zrozumienie czystego HTML/CSS/JS
-- **Wydajność** — brak narzutu frameworka
+- **Wydajność** — brak narzutu frameworka (3 pliki: HTML, CSS, JS)
 - **Hosting** — dowolny statyczny hosting (zero kosztów)
 
 ### Wymagania systemowe do developmentu
@@ -77,55 +86,26 @@ Strona łączy **edukację przyrodniczą** z **nowoczesnym web designem**, tworz
 ## Struktura Plików
 
 ```
-sciezka-natury/
+lesny-herbarium/
 │
-├── index.html              # Główna i jedyna strona HTML
+├── index.html              # Główna i jedyna strona HTML (472 linie)
+├── styles.css              # Wszystkie style CSS (~33 KB)
+├── script.js               # Cała logika JavaScript (911 linii, IIFE)
+├── README.md               # Dokumentacja projektu
 │
-├── css/
-│   ├── variables.css       # CSS Custom Properties (kolory, fonty, spacing)
-│   ├── reset.css           # CSS Reset / Normalize
-│   ├── style.css           # Główne style komponentów
-│   ├── parallax.css        # Style efektów parallax i warstw
-│   ├── animations.css      # Keyframes i klasy animacji
-│   └── responsive.css      # Media queries i breakpointy
+├── data/
+│   ├── plants.json         # Dane 15 gatunków roślin/grzybów
+│   └── facts.json          # Ciekawostki o przyrodzie (6 kategorii)
 │
-├── js/
-│   ├── main.js             # Punkt wejścia — inicjalizacja wszystkich modułów
-│   ├── parallax.js         # Logika parallax scrolling
-│   ├── animations.js       # Intersection Observer — animacje przy scrollu
-│   └── navbar.js           # Sticky navbar + aktywna sekcja + hamburger
+├── .kilocode/              # Konfiguracja agenta AI
+│   ├── rules/              # Reguły kodowania i workflow
+│   └── workflows/          # Workflowy analityczne
 │
-├── img/
-│   ├── hero/               # Zdjęcia do sekcji Hero
-│   │   └── forest-mist.webp
-│   ├── sections/           # Tła do poszczególnych sekcji
-│   │   ├── soil-texture.webp
-│   │   ├── litter-leaves.webp
-│   │   ├── forest-floor.webp
-│   │   ├── understory.webp
-│   │   ├── tree-bark.webp
-│   │   ├── canopy-light.webp
-│   │   └── sky-clouds.webp
-│   ├── content/            # Zdjęcia roślin i zwierząt do treści
-│   │   ├── earthworm.webp
-│   │   ├── mushroom.webp
-│   │   ├── fern.webp
-│   │   ├── moss.webp
-│   │   ├── blueberry.webp
-│   │   ├── hazel.webp
-│   │   ├── oak-bark.webp
-│   │   ├── pine-bark.webp
-│   │   ├── squirrel.webp
-│   │   └── woodpecker.webp
-│   └── icons/              # Ikony SVG
-│       ├── scroll-arrow.svg
-│       ├── leaf.svg
-│       ├── tree.svg
-│       └── sun.svg
+├── plans/                  # Plany i dokumentacja projektowa
+│   └── ...
 │
-├── fonts/                  # Opcjonalne lokalne pliki fontów (jeśli nie Google CDN)
-│
-└── README.md               # Dokumentacja projektu dla GitHub
+└── .vscode/
+    └── extensions.json     # Rekomendowane rozszerzenia VS Code
 ```
 
 ---
@@ -136,619 +116,376 @@ sciezka-natury/
 
 ```mermaid
 graph TD
-    HERO[🌫️ Hero - Wejście do lasu] -->|scroll down| S1[🪱 Gleba - Ukryty świat]
-    S1 -->|scroll down| S2[🍂 Ściółka - Warstwa opadłych liści]
-    S2 -->|scroll down| S3[🌿 Runo leśne - Zielony dywan]
-    S3 -->|scroll down| S4[🌾 Podszyt - Młode drzewa i krzewy]
-    S4 -->|scroll down| S5[🌳 Pnie drzew - Architektura lasu]
-    S5 -->|scroll down| S6[🐿 Korona drzew - Baldachim zieleni]
-    S6 -->|scroll down| S7[☁️ Niebo - Oddech lasu]
-    S7 -->|scroll down| FOOTER[📋 Footer]
+    HERO[🌫️ Hero - Wejście do lasu] -->|scroll down| STATS[📊 Stats - Animowane statystyki]
+    STATS -->|scroll down| ECO[🗺️ Ecosystem Map - Warstwy lasu]
+    ECO -->|scroll down| DISC[🔍 Discover - Kliknij i poznaj]
+    DISC -->|scroll down| CAT[🌿 Katalog Roślin]
+    CAT -->|scroll down| FOOTER[📋 Footer]
 
     NAV[Sticky Navbar] -.->|kotwica| HERO
-    NAV -.->|kotwica| S1
-    NAV -.->|kotwica| S2
-    NAV -.->|kotwica| S3
-    NAV -.->|kotwica| S4
-    NAV -.->|kotwica| S5
-    NAV -.->|kotwica| S6
-    NAV -.->|kotwica| S7
-
-    style HERO fill:#1a3c1a,color:#f0ead6
-    style S1 fill:#3e2723,color:#f0ead6
-    style S2 fill:#5d4037,color:#f0ead6
-    style S3 fill:#2d5a27,color:#f0ead6
-    style S4 fill:#4a7c3f,color:#f0ead6
-    style S5 fill:#5c3d2e,color:#f0ead6
-    style S6 fill:#6b8f5e,color:#f0ead6
-    style S7 fill:#87ceeb,color:#2c2c2c
-    style FOOTER fill:#2c2c2c,color:#f0ead6
-    style NAV fill:#0d260d,color:#f0ead6
+    NAV -.->|kotwica| ECO
+    NAV -.->|kotwica| DISC
+    NAV -.->|kotwica| CAT
+    NAV -.->|kotwica| FOOTER
 ```
 
-### Semantyczna struktura HTML
+### Architektura JavaScript (IIFE pattern)
 
-```html
-<body>
-  <nav id="navbar">...</nav>
-
-  <header id="hero" class="parallax-section">...</header>
-
-  <main>
-    <section id="gleba" class="parallax-section">...</section>
-    <section id="sciolka" class="parallax-section">...</section>
-    <section id="runo" class="parallax-section">...</section>
-    <section id="podszyt" class="parallax-section">...</section>
-    <section id="pnie" class="parallax-section">...</section>
-    <section id="korona" class="parallax-section">...</section>
-    <section id="niebo" class="parallax-section">...</section>
-  </main>
-
-  <footer id="footer">...</footer>
-</body>
+```
+script.js (IIFE)
+├── loadPlantsData()          # Fetch plants.json
+├── renderPlants()            # Renderowanie kart roślin
+├── filterByCategory()        # Filtr katalogu po kategorii
+├── filterBySearch()          # Wyszukiwarka w katalogu
+├── applyFilters()            # Łączenie filtrów
+├── openModal() / closeModal() # Modal szczegółów rośliny
+├── initScrollProgress()      # Pasek postępu scrolla
+├── initNavbarScroll()        # Zmiana navbar przy scrollu
+├── initHamburger()           # Menu mobilne
+├── initScrollToTop()         # Przycisk "wróć na górę"
+├── initSmoothScroll()        # Smooth scroll do sekcji
+├── initHeroParallax()        # Parallax Hero (4 warstwy)
+├── initStatsCountUp()        # Animacja liczników statystyk
+├── initEcosystemMap()        # Interaktywna mapa warstw
+│   ├── openEcoLayerModal()
+│   └── closeEcoLayerModal()
+├── initDiscover()            # Sekcja ciekawostek
+│   ├── loadFactsData()       # Fetch facts.json
+│   ├── renderFacts()
+│   ├── filterFactsByCategory()
+│   ├── openFactModal()
+│   └── closeFactModal()
+├── initKeyboardNavigation()  # Nawigacja klawiaturą (↑↓)
+├── initSectionMemory()       # localStorage - zapamiętywanie pozycji
+├── initForestParticles()     # Canvas particles podczas scrolla
+└── init()                    # Punkt wejścia — inicjalizacja
 ```
 
 ---
 
 ## Sekcje Strony
 
-### Sekcja 0: 🌫️ Hero — Wejście do lasu
+### Sekcja 1: 🌫️ Hero — Wejście do lasu
+
+**ID:** `#hero`
+**Elementy HTML:** `.hero`, `.hero-bg`, `.hero-overlay`, `.hero-content`, `.hero-foreground`, `.hero-scroll-indicator`
 
 **Opis wizualny:**
-Pełnoekranowe zdjęcie lasu spowitego mgłą. Tytuł animowany fade-in, podtytuł z opóźnieniem. Strzałka na dole pulsuje, zachęcając do scrollowania.
+Pełnoekranowa sekcja z wielowarstwowym efektem parallax. Tytuł "Leśny Herbarium" z podtytułem i przyciskiem CTA "Przeglądaj katalog".
 
 **Treści:**
-- Tytuł: **"Ścieżka Natury"**
-- Podtytuł: **"Odkryj tajemnice ekosystemu leśnego — warstwa po warstwie"**
-- Mikro-tekst przy strzałce: "Przewiń w dół, aby wejść do lasu"
+- Tytuł: **"Leśny Herbarium"**
+- Podtytuł: **"Odkryj tajemnice ekosystemu leśnego — od gleby po korony drzew"**
+- CTA: link do `#catalog`
 
 **Efekty:**
-- Parallax: tło przesuwa się wolniej niż tekst
-- Fade-in animacja tytułu (CSS `@keyframes`)
-- Pulsująca strzałka (`animation: bounce`)
-- Delikatny overlay gradient (ciemny na dole) dla lepszej czytelności tekstu
-
-**Tło:** Zdjęcie mglistego lasu (Unsplash: "foggy forest")
+- **Multi-layer parallax** (4 warstwy z `data-speed`): bg (0.3), overlay (0.5), content (0.15), foreground (0.6)
+- Parallax wyłączony na mobile (`window.innerWidth < 768`)
+- `requestAnimationFrame` dla wydajności (throttling)
 
 ---
 
-### Sekcja 1: 🪱 Gleba — Ukryty świat pod stopami
+### Sekcja 2: 📊 Stats — Animowane Statystyki
+
+**ID:** `#stats`
+**Elementy HTML:** `.stats-section`, `.stats-grid`, `.stat-item`
 
 **Opis wizualny:**
-Ciemnobrązowe tło z teksturą ziemi. Elementy pojawiają się "wyrastając" z dołu. Ciepłe, ciemne tony.
+Sekcja z 4 animowanymi licznikami statystyk o polskich lasach. Animacja uruchamia się gdy sekcja pojawi się w viewport.
 
-**Treści edukacyjne:**
-- **Nagłówek:** "Gleba — Fundament życia"
-- **Opis główny:** Gleba leśna to żywy organizm. Składa się z minerałów, materii organicznej, wody i powietrza. W jednej garści leśnej gleby żyje więcej mikroorganizmów niż ludzi na Ziemi.
-- **Kluczowe elementy:**
-  - 🪱 **Dżdżownice** — inżynierowie gleby, przerabiają materię organiczną, napowietrzają glebę
-  - 🍄 **Grzybnia (mycelium)** — podziemna sieć łącząca drzewa, tzw. "Wood Wide Web"
-  - 🦠 **Mikroorganizmy** — bakterie i grzyby rozkładające materię organiczną
-  - 💧 **Woda gruntowa** — gleba leśna działa jak gąbka, filtruje i magazynuje wodę
+**Statystyki:**
+| Ikona | Wartość | Opis |
+|---|---|---|
+| 🌳 | 9 500 000 ha | Powierzchnia lasów w Polsce |
+| 🌲 | 2 500 mld | Drzew rośnie w polskich lasach |
+| 💨 | 60 mln ton | Tlenu produkują rocznie |
+| 🦌 | 8 000+ | Gatunków zwierząt w lasach |
 
-- **Ciekawostka (wyróżniony box):** "Drzewa wymieniają się składnikami odżywczymi przez sieć grzybni. Starsze drzewa potrafią 'karmić' młodsze sadzonki rosnące w cieniu — naukowcy nazywają to Matczynym Drzewem."
-
-**Animacje:**
-- Elementy slide-in-up (wyrastają z dołu ekranu)
-- Ikony mikroorganizmów pojawiają się z fade-in
-
-**Paleta sekcji:** `#3e2723` (ciemny brąz), `#5d4037` (brąz), `#8d6e63` (jasny brąz)
+**Animacja:** Count-up effect (0 → wartość docelowa w 2000ms), jednorazowa (`hasAnimated` flag), `toLocaleString('pl-PL')`
 
 ---
 
-### Sekcja 2: 🍂 Ściółka — Warstwa opadłych liści
+### Sekcja 3: 🗺️ Ecosystem Map — Warstwy Lasu
+
+**ID:** `#ecosystem-map`
+**Elementy HTML:** `.ecosystem-map`, `.ecosystem-layer` (7 warstw), `.layer-tooltip`, `.eco-modal-overlay`
 
 **Opis wizualny:**
-Tło z teksturą opadłych liści, gałązek i szyszek. Ciepłe jesienne tony — pomarańcze, brązy, żółcie.
+Interaktywna mapa 7 warstw ekosystemu leśnego. Każda warstwa jest klikalna i otwiera modal ze szczegółowym opisem, ciekawostkami i przedstawicielami.
 
-**Treści edukacyjne:**
-- **Nagłówek:** "Ściółka — Recyclling natury"
-- **Opis główny:** Ściółka to warstwa między żywymi roślinami a glebą mineralną. Składa się z opadłych liści, igieł, gałązek, kory, szyszek i obumarłych roślin. To naturalny kompostownik lasu.
-- **Kluczowe elementy:**
-  - 🍂 **Opadłe liście** — główny składnik ściółki w lasach liściastych, rozkładają się w ciągu 1-3 lat
-  - 🌲 **Igły sosnowe** — rozkładają się wolniej (3-7 lat), zakwaszają glebę
-  - 🐛 **Rozkładacze** — chrząszcze, stonogi, wazonkowce, roztocza przetwarzają materię
-  - 🍄 **Grzyby saprofityczne** — maślaki, pieczarki leśne żywią się martwą materią
+**Warstwy (od góry do dołu):**
+| Warstwa | Emoji | Klucz |
+|---|---|---|
+| Niebo | ☁️ | `niebo` |
+| Korona Drzew | 🌳 | `korona` |
+| Pnie Drzew | 🪵 | `pnie` |
+| Podszyt | 🌾 | `podszyt` |
+| Runo Leśne | 🌿 | `runo` |
+| Ściółka | 🍂 | `sciolka` |
+| Gleba | 🪱 | `gleba` |
 
-- **Ciekawostka:** "Las liściasty produkuje rocznie 3-5 ton ściółki na hektar. Bez rozkładaczy, po 50 latach liście zalegałyby na wysokość kilku metrów."
+**Interakcje:**
+- Kliknięcie/klawiatura (Enter/Space) na warstwie → otwarcie modala
+- Modal zawiera: opis, 3 ciekawostki, lista przedstawicieli
+- Zamykanie: przycisk X, kliknięcie poza modal, Escape
+- Animowane SVG zwierząt w warstwie korony (🐿️, 🐦, 🕊️)
 
-**Animacje:**
-- Liście opadające z góry ekranu (CSS keyframes)
-- Elementy pojawiające się fade-in z lekkim obrotem
-
-**Paleta sekcji:** `#5d4037` (brąz), `#bf8040` (pomarańcz), `#8b6914` (złoty)
+**Dane:** `ecoLayerData` obiekt w `script.js` (linie 307-385)
 
 ---
 
-### Sekcja 3: 🌿 Runo leśne — Zielony dywan
+### Sekcja 4: 🔍 Discover — Kliknij i Poznaj
+
+**ID:** `#discover`
+**Elementy HTML:** `.discover-section`, `.discover-filter-btn`, `.discover-grid`, `.fact-modal-overlay`
 
 **Opis wizualny:**
-Soczyste zielenie. Zdjęcia paproci, mchów, borówek. Naturalny, świeży klimat.
+Sekcja z kartami ciekawostek o mieszkańcach lasu. Filtrowanie po kategoriach, kliknięcie karty otwiera mini-modal z obrazkiem i ciekawostką.
 
-**Treści edukacyjne:**
-- **Nagłówek:** "Runo leśne — Zielony dywan lasu"
-- **Opis główny:** Runo leśne to warstwa roślin zielnych, mchów i niskich krzewinek rosnących bezpośrednio na dnie lasu. Sięga do wysokości kolan. To najbogatsza warstwa pod względem różnorodności gatunkowej.
-- **Kluczowe elementy (karty roślin z opisem):**
-  - 🌿 **Paproć (Polypodiopsida)** — jedna z najstarszych roślin na Ziemi (ponad 360 mln lat), rozmnaża się przez zarodniki
-  - 🟢 **Mech (Bryophyta)** — mchy nie mają korzeni, chłoną wodę całą powierzchnią, tworzą mikroekosystemy
-  - 🫐 **Borówka czernica** — krzewinki do 50 cm, owoce bogate w antyoksydanty
-  - 🌼 **Konwalia majowa** — piękna, ale silnie trująca (wszystkie części rośliny)
-  - 🍀 **Szczawik zajęczy** — drobna roślinka z liśćmi jak koniczyna, zamyka liście na noc
+**Filtry kategorii:** Wszystkie, Drzewa, Kwiaty, Grzyby, Rośliny, Zwierzęta
 
-- **Ciekawostka:** "Mchy potrafią wchłonąć wodę ważącą 20 razy więcej niż one same. Działają jak naturalna gąbka lasu."
+**Dane:** Ładowane dynamicznie z `data/facts.json` via `fetch()`
+**Skeleton loading:** Placeholderowe karty podczas ładowania
 
-**Animacje:**
-- Karty roślin pojawiają się naprzemiennie z lewej i prawej (slide-in-left / slide-in-right)
-- Delikatny efekt falowania na tle (CSS animation)
-
-**Paleta sekcji:** `#2d5a27` (ciemna zieleń), `#4a7c3f` (zieleń), `#81c784` (jasna zieleń)
+**Mini-modal ciekawostki:** Obrazek (z fallbackiem), nazwa + kategoria, treść ciekawostki
 
 ---
 
-### Sekcja 4: 🌾 Podszyt — Młode drzewa i krzewy
+### Sekcja 5: 🌿 Katalog Roślin
+
+**ID:** `#catalog`
+**Elementy HTML:** `.catalog`, `.filter-btn`, `.search-input`, `.plants-grid`, `.modal-overlay`
 
 **Opis wizualny:**
-Warstwa gęstych krzewów i młodych drzewek. Zielono-brązowa kolorystyka. Poczucie głębi lasu.
+Główny interaktywny katalog 15 gatunków roślin/grzybów z filtrami kategorii, wyszukiwarką i modalem szczegółów.
 
-**Treści edukacyjne:**
-- **Nagłówek:** "Podszyt — Poczekalnia gigantów"
-- **Opis główny:** Podszyt to warstwa krzewów i młodych drzew rosnących od poziomu kolan do kilku metrów wysokości. To "poczekalnia" — młode drzewa czekają tu na swoją szansę, aż stare drzewa upadną i otworzą lukę w baldachimie.
-- **Kluczowe elementy:**
-  - 🌳 **Leszczyna (Corylus avellana)** — krzew do 6m, producent orzechów laskowych, kluczowy dla wiewiórek
-  - 🫐 **Kruszyna (Frangula alnus)** — jej owoce to pokarm dla ptaków, kora ma właściwości lecznicze
-  - 🌹 **Dzika róża (Rosa canina)** — kolczaste krzewy z owocami bogatymi w witaminę C
-  - 🌱 **Młode dęby i buki** — sadzonki czekające na "okno świetlne", mogą przetrwać w cieniu nawet 100 lat
-  - 🦌 **Mieszkańcy podszytu** — sarny, zające, bażanty szukają tu schronienia
+**Filtry kategorii (6 przycisków):** Wszystkie, Drzewa, Krzewy, Kwiaty, Grzyby, Zioła
 
-- **Ciekawostka:** "Młody buk może przetrwać w cieniu podszytu nawet 100 lat, rosnąc zaledwie kilka centymetrów rocznie. Gdy stare drzewo padnie, nagle przyśpiesza wzrost 10-krotnie."
+**Wyszukiwarka:** Wyszukiwanie po nazwie polskiej i łacińskiej, debounce 200ms, case-insensitive
 
-**Animacje:**
-- Krzewy "wyrastają" od dołu (scale-up + fade-in)
-- Parallax z wieloma warstwami liści
+**Karty roślin zawierają:** Obrazek (z emoji fallback `onerror`), nazwa polska, nazwa łacińska, badge kategorii
 
-**Paleta sekcji:** `#4a7c3f` (zieleń), `#6b8f5e` (jasna zieleń), `#3e6b35` (ciemna zieleń)
+**Licznik wyników:** "Wyświetlane: X z Y" (aria-live="polite")
+
+**Modal szczegółów rośliny:** Obrazek (emoji kategorii), kategoria, nazwa, nazwa łacińska, opis, 4 szczegóły (wysokość, kwitnienie, siedlisko, warstwa lasu), ciekawostka
+
+**Dane:** Ładowane dynamicznie z `data/plants.json` via `fetch()` (15 gatunków)
 
 ---
 
-### Sekcja 5: 🌳 Pnie drzew — Architektura lasu
+### Sekcja 6: 📋 Footer
 
-**Opis wizualny:**
-Tekstura kory drzewnej. Ciepłe brązy. Infografika przekroju pnia. Monumentalne, wertykalne linie.
-
-**Treści edukacyjne:**
-- **Nagłówek:** "Pnie drzew — Kolumny katedry natury"
-- **Opis główny:** Pnie drzew to szkielet lasu. Transportują wodę z korzeni do liści na wysokość nawet 100 metrów, wbrew grawitacji. Każdy pień to archiwum — jego słoje opowiadają historię setek lat.
-- **Kluczowe elementy (rozpoznawanie drzew po korze):**
-  - 🟤 **Dąb szypułkowy** — głęboko spękana, gruba kora, żyje do 1000 lat
-  - ⚪ **Brzoza brodawkowata** — biała, papierowa kora łuszcząca się pasami
-  - 🟠 **Sosna zwyczajna** — ceglastoczerwona kora w górnej części pnia
-  - 🔘 **Buk zwyczajny** — gładka, szara kora przypominająca skórę słonia
-
-- **Infografika — Przekrój pnia:**
-  - **Kora** — zewnętrzna warstwa ochronna
-  - **Łyko** — transportuje cukry z liści do korzeni
-  - **Kambium** — cienka warstwa, w której drzewo rośnie na grubość
-  - **Drewno bielaste** — transportuje wodę z korzeni do liści
-  - **Twardziel** — martwe drewno, stabilizacja mechaniczna
-  - **Rdzeń** — najstarsze centrum pnia
-
-- **Ciekawostka:** "Drzewo nie ma pompy — woda podróżuje w górę dzięki transpiracji z liści, siłom kapilarnym i kohezji cząsteczek wody. Duży dąb transportuje nawet 400 litrów wody dziennie."
-
-**Animacje:**
-- Infografika przekroju "rysuje się" warstwa po warstwie przy scrollu
-- Elementy rozpoznawcze kory pojawiają się z fade-in
-
-**Paleta sekcji:** `#5c3d2e` (kora), `#795548` (jasny brąz), `#4e342e` (ciemny brąz)
-
----
-
-### Sekcja 6: 🐿️ Korona drzew — Baldachim zieleni
-
-**Opis wizualny:**
-Jasne zielenie, prześwity słońca przez liście. Efekt patrzenia w górę. Lekki, lotny klimat.
-
-**Treści edukacyjne:**
-- **Nagłówek:** "Korona drzew — Fabryka życia"
-- **Opis główny:** Korony drzew tworzą baldachim — zielony dach lasu. To tutaj zachodzi fotosynteza, tu żyją ptaki i owady, tu drzewa walczą o każdy promień słońca. Korony dojrzałego lasu mogą pokrywać nawet 95% powierzchni nieba.
-- **Kluczowe elementy:**
-  - 🌞 **Fotosynteza** — liście zamieniają CO2 i wodę w cukier i tlen; jedno duże drzewo produkuje tlen dla 4 osób rocznie
-  - 🐿️ **Wiewiórka (Sciurus vulgaris)** — mistrzyni akrobacji, robi zapasy na zimę zakopując żołędzie (i zapominając gdzie — tak sadzi nowe dęby)
-  - 🐦 **Dzięcioł (Dendrocopos)** — "lekarz lasu", szuka owadów w korze; jego dziuple zasiedlają potem inne zwierzęta
-  - 🦋 **Owady** — korona to siedlisko milionów gatunków; same mrówki mogą stanowić 10% biomasy lasu
-  - 🌬️ **Efekt baldachimu** — korony moderują temperaturę (las jest 5-10 stopni chłodniejszy niż otwarta przestrzeń)
-
-- **Ciekawostka:** "Korony sąsiednich drzew często nie dotykają się nawzajem, tworząc tzw. 'crown shyness' — tajemnicze szczeliny między koronami. Naukowcy wciąż debatują, dlaczego tak się dzieje."
-
-**Animacje:**
-- Liście "spadające" z różnymi prędkościami (parallax warstwy)
-- Promienie słońca pulsujące lekko (CSS animation)
-- Ikony zwierząt z tooltipami (hover effect)
-
-**Paleta sekcji:** `#6b8f5e` (mech), `#a5d6a7` (jasna zieleń), `#fff9c4` (słoneczny żółty)
-
----
-
-### Sekcja 7: ☁️ Niebo — Oddech lasu
-
-**Opis wizualny:**
-Gradient od zieleni do błękitu nieba. Chmury przesuwają się powoli. Otwarta, spokojna przestrzeń. Ton podsumowujący.
-
-**Treści edukacyjne:**
-- **Nagłówek:** "Niebo — Las oddycha dla nas"
-- **Opis główny:** Lasy to płuca planety. Pochłaniają CO2 i produkują tlen, regulują klimat, zatrzymują wodę, chronią glebę przed erozją. Polskie lasy pokrywają 29.6% powierzchni kraju — ale wciąż za mało.
-- **Statystyki (duże, animowane liczniki):**
-  - 🌍 **29.6%** — powierzchnia Polski pokryta lasami
-  - 🌲 **1 hektar lasu** pochłania rocznie 5-10 ton CO2
-  - 💨 **1 duże drzewo** produkuje tlen dla 4 osób
-  - 💧 **Las** zatrzymuje do 200 mm wody na metr kwadratowy
-  - 🌡️ **-10°C** — o tyle cooler może być w lesie niż w mieście latem
-
-- **Sekcja "Chroń las":**
-  - Krótki apel o ochronę lasów
-  - Linki do organizacji: Lasy Państwowe, WWF Polska, Klub Gaja
-  - Przycisk "Posadź drzewo" (link do akcji sadzenia)
-
-- **Ciekawostka:** "Gdyby lasy amazońskie zniknęły, roczne opady w całej Ameryce Południowej spadłyby o 25%. Lasy nie tylko produkują tlen — one dosłownie tworzą deszcz."
-
-**Animacje:**
-- Chmury przesuwające się powoli (CSS translateX animation)
-- Liczniki animowane (CountUp effect w JS — od 0 do wartości docelowej)
-- Fade-in elementów przy scrollu
-
-**Paleta sekcji:** `#87ceeb` (niebo), `#b3e5fc` (jasne niebo), `#ffffff` (chmury)
-
----
-
-### Sekcja 8: 📋 Footer
+**ID:** `#footer`
+**Elementy HTML:** `.footer`, `.footer-section` (4 kolumny)
 
 **Zawartość:**
-- Szybka nawigacja do wszystkich sekcji
-- Informacja o autorze i celu projektu
-- Źródła danych naukowych
-- Licencje zdjęć (Unsplash/Pexels — free license)
-- Link do repozytorium GitHub
+1. **Leśny Herbarium** — opis projektu
+2. **Nawigacja** — linki do sekcji
+3. **Źródła** — Lasy Państwowe, Flora Polski
+4. **Projekt** — stack info + link GitHub
 
-**Styl:** Ciemne tło (`#1a1a2e`), jasny tekst, minimalistyczny layout
+**Bottom:** `© 2026 Leśny Herbarium. Projekt edukacyjny.`
 
 ---
 
 ## Nawigacja
 
 ### Desktop
-- **Sticky navbar** przyklejony do górnej krawędzi ekranu
-- W Hero: przezroczyste tło, biały tekst
-- Po scrollu > 100px: pełne ciemne tło z blur (`backdrop-filter: blur`)
-- Linki do 7 sekcji tematycznych (gleba → niebo)
-- Aktywna sekcja podświetlona (Intersection Observer API)
-- Logo/nazwa "Ścieżka Natury" po lewej
-- Smooth scrolling (`scroll-behavior: smooth` + JS fallback)
+- **Sticky navbar** — przezroczysty w Hero, ciemne tło po scrollu > 50px
+- Linki-kotwice do sekcji: Strona główna, Katalog roślin, Kontakt
+- Logo z emoji 🌲 i tekstem "Leśny Herbarium"
+- Smooth scroll z offsetem na wysokość navbara
 
 ### Mobile
-- Hamburger menu (3 kreski → X)
-- Wysuwany panel z linkami (slide-in z prawej)
-- Po kliknięciu linku panel się zamyka
-- Touch-friendly targets (min 44x44px)
+- **Hamburger menu** (3 kreski → animacja X)
+- Menu zamyka się po kliknięciu linku
 
-### Diagram nawigacji
-
-```mermaid
-graph LR
-    A[Navbar] --> B[Logo: Sciezka Natury]
-    A --> C[Menu Links]
-    C --> D[Gleba]
-    C --> E[Sciolka]
-    C --> F[Runo]
-    C --> G[Podszyt]
-    C --> H[Pnie]
-    C --> I[Korona]
-    C --> J[Niebo]
-    A --> K[Hamburger - mobile only]
-    K --> L[Slide-in Panel]
-    L --> D
-    L --> E
-    L --> F
-    L --> G
-    L --> H
-    L --> I
-    L --> J
-```
+### Dodatkowe mechanizmy nawigacji
+| Mechanizm | Opis | Implementacja |
+|---|---|---|
+| **Scroll Progress Bar** | Pasek postępu scrolla na górze strony | `initScrollProgress()` |
+| **Scroll to Top** | Przycisk pojawia się po 50% scrolla | `initScrollToTop()` |
+| **Keyboard Navigation** | Arrow Up/Down do nawigacji między sekcjami | `initKeyboardNavigation()` |
+| **Section Memory** | Zapamiętuje ostatnią sekcję w localStorage | `initSectionMemory()` |
+| **Smooth Scroll** | Płynne przewijanie do kotwic | `initSmoothScroll()` |
 
 ---
 
 ## Efekty Wizualne i Techniczne
 
-### Parallax Scrolling
+### Multi-layer Parallax (Hero)
 
-**Metoda podstawowa — CSS:**
-```css
-.parallax-section {
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-}
-```
+**Metoda:** JavaScript `requestAnimationFrame` + `transform: translateY()`
 
-**Metoda zaawansowana — JS (multi-layer):**
-```javascript
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    layers.forEach(layer => {
-        const speed = layer.dataset.speed;
-        layer.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-```
-
-**Uwagi:**
-- Na iOS/Safari `background-attachment: fixed` nie działa — zastosować fallback
-- Na mobile całkowicie wyłączyć parallax JS dla wydajności
-- Użyć `will-change: transform` dla warstw parallax (GPU acceleration)
-
-### Scroll-Triggered Animations
-
-**Technologia:** Intersection Observer API
-
-```javascript
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    observer.observe(el);
-});
-```
-
-**Typy animacji CSS:**
-
-| Klasa | Efekt | Użycie |
+**Warstwy:**
+| Warstwa | Speed | Efekt |
 |---|---|---|
-| `.fade-in` | Opacity 0 → 1 | Wszystkie elementy |
-| `.slide-in-left` | Przesunięcie z lewej | Parzyste karty |
-| `.slide-in-right` | Przesunięcie z prawej | Nieparzyste karty |
-| `.slide-in-up` | Przesunięcie z dołu | Elementy gleby |
-| `.scale-up` | Powiększenie 0.8 → 1 | Ikony, statystyki |
-| `.draw-in` | Rysowanie SVG | Infografika przekroju |
+| `.hero-bg` | 0.3 | Tło przesuwa się wolniej |
+| `.hero-overlay` | 0.5 | Pół-overlay |
+| `.hero-content` | 0.15 | Tekst prawie statyczny |
+| `.hero-foreground` | 0.6 | Pierwszy plan przesuwa się szybciej |
 
-### Animated Counters (Sekcja Niebo)
+**Optymalizacje:** Wyłączony na mobile, `requestAnimationFrame` + `ticking` flag, wyłącza się po scrollu poza Hero
 
-```javascript
-function animateCounter(element, target, duration) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
-        }
-    }, 16);
-}
-```
+### Forest Particles (Canvas)
+
+Animowane cząsteczki (pyłki kwiatowe) pojawiające się podczas scrollowania. Canvas 2D overlay (`z-index: 50`, `pointer-events: none`). Max 60 cząsteczek, kolory złoty i zielony. Wyłączony na mobile.
+
+### Stats Count-Up Animation
+
+`requestAnimationFrame` + `data-target` atrybut, duration 2000ms, `toLocaleString('pl-PL')`, trigger scroll do 75% viewport, jednorazowa animacja.
+
+### Scroll Progress Bar
+
+Obliczenie procentu scrolla i ustawienie `width` na `.scroll-progress`
+
+### Escape HTML Helper
+
+Funkcja `escapeHtml()` zapobiega XSS przy renderowaniu danych z JSON.
+
+### Image Loading States
+
+- Pierwsze 4 karty: `loading="eager" fetchpriority="high"`
+- Reszta: `loading="lazy" decoding="async"`
+- Fallback: Emoji przy błędzie ładowania (`onerror`)
+
+---
+
+## Modale
+
+Projekt zawiera **3 osobne modale**:
+
+### 1. Modal Szczegółów Rośliny (`.modal-overlay`)
+- **Trigger:** Kliknięcie karty w Katalogu Roślin
+- **Zawartość:** Obrazek, kategoria, nazwa, nazwa łacińska, opis, 4 detale, ciekawostka
+- **Zamykanie:** Przycisk X, kliknięcie poza modal, Escape
+
+### 2. Modal Warstwy Ekosystemu (`.eco-modal-overlay`)
+- **Trigger:** Kliknięcie warstwy w Ecosystem Map
+- **Zawartość:** Emoji, tytuł, opis, lista ciekawostek, przedstawiciele
+- **7 warstw:** niebo, korona, pnie, podszyt, runo, sciolka, gleba
+
+### 3. Mini-Modal Ciekawostki (`.fact-modal-overlay`)
+- **Trigger:** Kliknięcie karty w Discover
+- **Zawartość:** Obrazek (opcjonalny), nazwa, kategoria, ciekawostka
 
 ---
 
 ## Design System
 
-### Paleta Kolorów
+### Paleta Kolorów (CSS Custom Properties)
 
-```css
-:root {
-    /* Główne kolory lasu */
-    --forest-darkest:   #0d260d;    /* Najciemniejsza zieleń - navbar */
-    --forest-dark:      #1a3c1a;    /* Ciemna zieleń - hero */
-    --forest-green:     #2d5a27;    /* Zieleń drzew */
-    --leaf-green:       #4a7c3f;    /* Liście */
-    --moss-green:       #6b8f5e;    /* Mech */
-    --light-green:      #a5d6a7;    /* Jasna zieleń */
-
-    /* Brązy i gleba */
-    --soil-dark:        #3e2723;    /* Ciemna gleba */
-    --soil-brown:       #5d4037;    /* Brąz gleby */
-    --bark-brown:       #5c3d2e;    /* Kora */
-    --bark-light:       #795548;    /* Jasna kora */
-    --litter-orange:    #bf8040;    /* Ściółka */
-    --litter-gold:      #8b6914;    /* Złoty liść */
-
-    /* Niebo */
-    --sky-blue:         #87ceeb;    /* Niebo */
-    --sky-light:        #b3e5fc;    /* Jasne niebo */
-    --cloud-white:      #f5f5f0;    /* Chmury */
-    --sun-gold:         #d4a843;    /* Słońce */
-    --sun-yellow:       #fff9c4;    /* Jasne promienie */
-
-    /* Tekst */
-    --text-on-dark:     #f0ead6;    /* Kremowy tekst na ciemnym tle */
-    --text-on-light:    #2c2c2c;    /* Ciemny tekst na jasnym tle */
-
-    /* Footer */
-    --footer-bg:        #1a1a2e;    /* Ciemny granat */
-}
-```
+| Zmienna | Wartość | Użycie |
+|---|---|---|
+| `--forest-darkest` | #0d260d | Navbar |
+| `--forest-dark` | #1a3c1a | Hero |
+| `--forest-green` | #2d5a27 | Zieleń drzew |
+| `--leaf-green` | #4a7c3f | Liście |
+| `--moss-green` | #6b8f5e | Mech |
+| `--soil-dark` | #3e2723 | Ciemna gleba |
+| `--soil-brown` | #5d4037 | Brąz gleby |
+| `--bark-brown` | #5c3d2e | Kora |
+| `--sky-blue` | #87ceeb | Niebo |
+| `--sun-gold` | #d4a843 | Słońce |
+| `--text-on-dark` | #f0ead6 | Kremowy tekst |
+| `--text-on-light` | #2c2c2c | Ciemny tekst |
 
 ### Typografia
 
-```css
-:root {
-    /* Fonty */
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Lato', 'Segoe UI', sans-serif;
-
-    /* Rozmiary (fluid - clamp) */
-    --text-xs:    clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-    --text-sm:    clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
-    --text-base:  clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-    --text-lg:    clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
-    --text-xl:    clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
-    --text-2xl:   clamp(2rem, 1.5rem + 2.5vw, 3rem);
-    --text-3xl:   clamp(2.5rem, 2rem + 3vw, 4rem);
-    --text-hero:  clamp(3rem, 2rem + 5vw, 6rem);
-
-    /* Line heights */
-    --leading-tight: 1.2;
-    --leading-normal: 1.6;
-    --leading-relaxed: 1.8;
-}
-```
-
-### Spacing
-
-```css
-:root {
-    --space-xs:   0.5rem;
-    --space-sm:   1rem;
-    --space-md:   2rem;
-    --space-lg:   4rem;
-    --space-xl:   6rem;
-    --space-2xl:  8rem;
-
-    --section-padding: clamp(4rem, 8vw, 10rem) clamp(1rem, 5vw, 4rem);
-}
-```
+| Font | Zastosowanie | Źródło |
+|---|---|---|
+| **Playfair Display** | Nagłówki (h1-h3) | Google Fonts |
+| **Lato** (300, 400, 700) | Tekst body | Google Fonts |
 
 ---
 
 ## Responsywność
 
-### Breakpointy
-
 | Breakpoint | Zakres | Urządzenie |
 |---|---|---|
-| xs | 0 - 479px | Telefony (portrait) |
-| sm | 480 - 767px | Telefony (landscape), małe tablety |
-| md | 768 - 1023px | Tablety |
-| lg | 1024 - 1199px | Laptopy |
-| xl | 1200px+ | Desktopy |
+| Mobile | 0 - 767px | Telefony |
+| Tablet | 768 - 1023px | Tablety |
+| Desktop | 1024px+ | Laptopy, monitory |
 
-### Zmiany na mobile (< 768px)
-- Parallax wyłączony (`background-attachment: scroll`)
-- Parallax JS wyłączony (media query check)
-- Single-column layout
-- Hamburger menu zamiast inline nawigacji
-- Mniejsze fonty (fluid typography)
-- Uproszczone animacje (tylko fade-in)
-- Infografika przekroju pnia: wersja uproszczona
+**Zmiany na mobile (< 768px):** Parallax wyłączony, Forest Particles wyłączony, hamburger menu, single-column layout, uproszczone animacje
 
 ---
 
 ## Accessibility
 
-- **Semantyczny HTML** — poprawne użycie `header`, `main`, `section`, `footer`, `nav`
-- **Alt texty** — opisowe alt dla wszystkich zdjęć
-- **Contrast ratio** — minimum 4.5:1 (WCAG AA) dla tekstu
-- **Focus styles** — widoczne outline dla nawigacji klawiaturą
-- **`prefers-reduced-motion`** — wyłączenie animacji dla użytkowników z epilepsją
-
-```css
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-```
-
-- **Skip to content link** — ukryty link na górze strony
-- **ARIA labels** — dla hamburger menu i interaktywnych elementów
+- **Semantyczny HTML** — `header`, `main`, `section`, `footer`, `nav`, `article`
+- **ARIA attributes** — `role="button"`, `role="dialog"`, `aria-modal`, `aria-label`, `aria-expanded`, `aria-hidden`, `aria-live="polite"`
+- **Keyboard navigation** — Enter/Space na kartach, Escape do zamykania modali
+- **Focus management** — focus na przycisk zamykania po otwarciu modala
+- **sr-only** — klasa dla ukrytych label
+- **Loading states** — skeleton cards podczas ładowania danych
+- **No results states** — komunikat gdy brak wyników filtrowania
 
 ---
 
 ## Performance
 
-- **Obrazy WebP** — 30-50% mniejsze niż JPEG
-- **Lazy loading** — `loading="lazy"` na zdjęciach poniżej fold
-- **Optymalne rozmiary** — max 1920px szerokość, kompresja do < 200KB per obraz
-- **CSS / JS nie blokujące** — CSS w `<head>`, JS z `defer`
-- **Brak zewnętrznych bibliotek** — zero dodatkowych HTTP requests (poza Google Fonts)
-- **Font display swap** — `font-display: swap` w Google Fonts URL
+- **Vanilla JS** — zero bibliotek, zero zależności
+- **IIFE pattern** — izolacja scope, brak zmiennych globalnych
+- **Lazy loading obrazów** — `loading="lazy"` dla kart poza viewportem
+- **Debounced search** — 200ms opóźnienie przy wyszukiwaniu
+- **`requestAnimationFrame`** — parallax i count-up animacje
+- **Canvas particles** — wyłączony na mobile, max 60 cząsteczek
+- **LocalStorage debounced** — 300ms opóźnienie przy zapisywaniu pozycji
+- **HTML escaping** — zabezpieczenie przed XSS
 
-```html
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+---
+
+## Struktura Danych
+
+### plants.json (15 gatunków)
+
+```json
+{
+  "id": 1,
+  "name": "Dąb szypułkowy",
+  "latinName": "Quercus robur",
+  "category": "drzewa",
+  "layer": "korona",
+  "description": "Opis gatunku...",
+  "funFact": "Ciekawostka...",
+  "image": "https://...",
+  "height": "25-40 m",
+  "flowering": "kwiecień-maj",
+  "habitat": "Lasy mieszane, żyzne siedliska"
+}
 ```
 
-- **Target:** Lighthouse score > 90 na wszystkich kategoriach
+**Kategorie:** drzewa (3), krzewy (3), kwiaty (3), grzyby (3), zioła (2) — łącznie: 15
+
+### facts.json
+
+```json
+{
+  "name": "Nazwa",
+  "category": "drzewa | kwiaty | grzyby | rośliny | zwierzęta",
+  "emoji": "🌳",
+  "image": "https://...",
+  "funFact": "Treść ciekawostki..."
+}
+```
 
 ---
 
 ## Zasoby i Źródła
 
-### Darmowe zdjęcia
-
-| Sekcja | Sugerowane wyszukiwanie | Źródło |
-|---|---|---|
-| Hero | "foggy forest path" | Unsplash |
-| Gleba | "forest soil texture", "earthworm macro" | Pexels |
-| Ściółka | "fallen leaves forest floor" | Pixabay |
-| Runo leśne | "fern forest", "moss close up", "blueberry bush" | Unsplash |
-| Podszyt | "forest understory", "hazel bush" | Pexels |
-| Pnie drzew | "tree bark texture", "oak trunk", "birch bark" | Unsplash |
-| Korona | "forest canopy sunlight", "looking up trees" | Unsplash |
-| Niebo | "sky through trees", "clouds blue sky" | Pexels |
+### Zdjęcia
+- Obrazy ładowane z zewnętrznych URL (Unsplash, Wikimedia, inne źródła)
+- Fallback na emoji przy błędzie ładowania
 
 ### Źródła treści edukacyjnych
-- Lasy Państwowe (lasy.gov.pl) — dane o polskich lasach
+- Lasy Państwowe (lasy.gov.pl)
 - Wikipedia — informacje o gatunkach
-- National Geographic — ciekawostki
-- Książka "Sekretne życie drzew" — Peter Wohlleben
 
 ### Narzędzia
 - **VS Code** + Live Server extension
 - **Chrome DevTools** — debugging, responsive testing
-- **Lighthouse** — audyt performance
-- **TinyPNG / Squoosh** — kompresja obrazów
-- **Figma** (opcjonalnie) — mockupy
-
----
-
-## Plan Implementacji
-
-### Krok 1: Fundament
-- [ ] Utworzyć strukturę plików i folderów
-- [ ] Napisać szkielet HTML (semantyczne sekcje)
-- [ ] Dodać CSS reset i zmienne (variables.css)
-- [ ] Podłączyć Google Fonts
-
-### Krok 2: Base Styling
-- [ ] Ostylować sekcję Hero (pełny ekran, tło, tytuł)
-- [ ] Ostylować każdą z 7 sekcji tematycznych (tła, kolory, spacing)
-- [ ] Dodać typografię i spacing globalny
-- [ ] Dodać footer
-
-### Krok 3: Nawigacja
-- [ ] Zbudować sticky navbar (HTML + CSS)
-- [ ] Dodać smooth scrolling do kotwic
-- [ ] Zaimplementować zmianę tła navbar przy scrollu (JS)
-- [ ] Dodać podświetlanie aktywnej sekcji (Intersection Observer)
-
-### Krok 4: Treści
-- [ ] Napisać treści edukacyjne dla każdej sekcji
-- [ ] Pobrać i zoptymalizować zdjęcia (WebP, lazy loading)
-- [ ] Dodać karty roślin/zwierząt z opisami
-- [ ] Stworzyć infografikę przekroju pnia (HTML/CSS lub SVG)
-
-### Krok 5: Animacje i Parallax
-- [ ] Zaimplementować parallax CSS (background-attachment)
-- [ ] Dodać Intersection Observer dla scroll animations
-- [ ] Dodać klasy animacji CSS (fade-in, slide-in, scale-up)
-- [ ] Zaimplementować animated counters (sekcja Niebo)
-
-### Krok 6: Responsywność
-- [ ] Media queries — mobile first
-- [ ] Hamburger menu na mobile
-- [ ] Wyłączenie parallax na mobile
-- [ ] Test na różnych rozdzielczościach (Chrome DevTools)
-
-### Krok 7: Polish i Deploy
-- [ ] Accessibility audit (contrast, alt texts, focus styles)
-- [ ] Performance audit (Lighthouse)
-- [ ] Reduced motion support
-- [ ] Deploy na GitHub Pages lub Netlify
-- [ ] Napisać README.md dla repozytorium
+- **Kilo Code AI** — asystent kodowania
 
 ---
 
@@ -758,11 +495,9 @@ function animateCounter(element, target, duration) {
 1. Utworzyć repozytorium na GitHub
 2. Push kodu
 3. Settings → Pages → Source: main branch, / (root)
-4. Strona dostępna pod: `https://username.github.io/sciezka-natury`
 
 ### Netlify (alternatywa)
 1. Konto na netlify.com
 2. Drag & drop folderu projektu
-3. Automatyczny deploy z custom URL
 
 **Koszt:** 0 zł (oba rozwiązania darmowe dla statycznych stron)

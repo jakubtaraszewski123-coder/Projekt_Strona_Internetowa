@@ -1,86 +1,119 @@
-# Plan: Strona Leśny Herbarium
+# Plan: Leśny Herbarium — Strona Katalogu Roślin
 
 ## Metadane
 
 | Pole | Wartość |
 |---|---|
 | **Data** | 2026-04-13 |
-| **Szacowany czas** | 4–5 godzin |
+| **Status** | ✅ ZAKOŃCZONY (zaktualizowano 2026-05-11) |
 | **Stack** | Vanilla HTML + CSS + JavaScript |
-| **Pliki do zmiany** | `index.html`, `styles.css`, `script.js`, `data/plants.json` (nowe) |
+| **Pliki** | `index.html` (472 linie), `styles.css` (~33 KB), `script.js` (911 linii) |
+| **Dane** | `data/plants.json` (15 gatunków), `data/facts.json` |
 
 ## Kontekst
 
-Strona typu portfolio prezentująca katalog roślin leśnych w formie interaktywnych kart z możliwością filtrowania i wyszukiwania. Celem jest stworzenie nowoczesnej, responsywnej strony z efektownym designem inspirowanym naturą, która będzie wizytówką projektu i pokaże umiejętności frontendowe.
+Strona typu one-page prezentująca interaktywny katalog roślin leśnych z filtrami, wyszukiwarką, modalem szczegółów, interaktywną mapą ekosystemu, sekcją ciekawostek i animowanymi statystykami.
 
 ---
 
 ## Sekcja 1: Struktura HTML i dane
 
-- [x] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi roślin (min. 12 pozycji) 
-- [x] 1.2 Utworzyć `index.html` z sekcjami: header, hero, karty roślin, footer 
-- [x] 1.3 Dodać strukturę nawigacji (logo, filtry kategorii, wyszukiwarka) 
-- [x] 1.4 Dodać modal dla szczegółów rośliny (ukryty domyślnie) 
+- [x] 1.1 Utworzyć folder `data/` i plik `plants.json` z danymi 15 gatunków
+- [x] 1.2 Utworzyć `data/facts.json` z ciekawostkami (6 kategorii)
+- [x] 1.3 Utworzyć `index.html` z sekcjami: header, hero, stats, ecosystem-map, discover, catalog, footer
+- [x] 1.4 Dodać nawigację (logo, linki kotwicowe, hamburger)
+- [x] 1.5 Dodać 3 modale: plant-detail, eco-layer, fact-mini
+- [x] 1.6 Dodać scroll progress bar i scroll-to-top button
 
 ### Weryfikacja Sekcji 1
-- [ ] 1.5 Otworzyć `index.html` w przeglądarce — struktura strony widoczna
-- [ ] 1.6 Sprawdzić konsolę — brak błędów
+- [x] 1.7 Otworzyć `index.html` w przeglądarce — wszystkie sekcje widoczne
+- [x] 1.8 Sprawdzić konsolę — brak błędów
 
 ---
 
 ## Sekcja 2: Style CSS i design
 
-- [x] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego) 
-- [x] 2.2 Zaimplementować fonty (np. Montserrat dla nagłówków, Open Sans dla tekstu) 
-- [ ] 2.3 Stylizować header z efektem glassmorphism 
-- [ ] 2.4 Utworzyć responsywny grid dla kart roślin (1 kolumna mobile, 2 tablet, 3-4 desktop) 
-- [ ] 2.5 Dodać hover efekty na kartach (transform: scale, box-shadow) 
-- [ ] 2.6 Stylizować przyciski filtrów z aktywnym stanem 
-- [ ] 2.7 Dodać animacje wejścia dla kart (fade-in przy load) 
+- [x] 2.1 Zdefiniować zmienne CSS dla kolorów (odcienie zieleni, brązu, kremowego)
+- [x] 2.2 Zaimplementować fonty Google (Playfair Display + Lato)
+- [x] 2.3 Stylizować header z efektem glassmorphism i stan `.scrolled`
+- [x] 2.4 Stylizować sekcję Hero z overlay i parallax-ready warstwami
+- [x] 2.5 Stylizować Stats Section — grid 4 kolumn
+- [x] 2.6 Stylizować Ecosystem Map — pionowe warstwy z tooltipami
+- [x] 2.7 Stylizować Discover Section — grid kart ciekawostek
+- [x] 2.8 Stylizować Katalog Roślin — grid kart, filtry, wyszukiwarka
+- [x] 2.9 Stylizować 3 modale (overlay, body, close button)
+- [x] 2.10 Stylizować scroll progress bar i scroll-to-top
+- [x] 2.11 Stylizować Footer (4-kolumnowy grid)
+- [x] 2.12 Dodać hover efekty na kartach (transform, box-shadow)
+- [x] 2.13 Dodać skeleton loading states
+- [x] 2.14 Dodać no-results states
 
 ### Weryfikacja Sekcji 2
-- [ ] 2.8 Sprawdzić wygląd na różnych rozdzielczościach (375px, 768px, 1280px)
-- [ ] 2.9 Zweryfikować czytelność tekstu i kontrast kolorów
+- [x] 2.15 Sprawdzić wygląd na różnych rozdzielczościach (375px, 768px, 1280px)
+- [x] 2.16 Zweryfikować czytelność tekstu i kontrast kolorów
 
 ---
 
 ## Sekcja 3: JavaScript — logika interakcji
 
-- [x] 3.1 Zaimportować dane z `plants.json` do zmiennej 
-- [x] 3.2 Zaimplementować funkcję renderującą karty roślin 
-- [x] 3.3 Dodać filtrowanie po kategorii (drzewa, krzewy, zioła, grzyby, kwiaty)
-- [x] 3.4 Zaimplementować wyszukiwarkę tekstową (filtrowanie po nazwie)
-- [x] 3.5 Dodać otwieranie modala ze szczegółami po kliknięciu karty
-- [x] 3.6 Dodać zamykanie modala (przycisk X, kliknięcie poza modalem, Esc)
-- [x] 3.7 Dodać animację ładowania kart (skeleton lub spinner)
+- [x] 3.1 Zaimportować dane z `plants.json` via fetch()
+- [x] 3.2 Zaimportować dane z `facts.json` via fetch()
+- [x] 3.3 Zaimplementować funkcję renderującą karty roślin
+- [x] 3.4 Zaimplementować funkcję renderującą karty ciekawostek
+- [x] 3.5 Dodać filtrowanie katalogu po kategorii (6 kategorii)
+- [x] 3.6 Dodać wyszukiwarkę tekstową w katalogu (nazwa + łacińska, debounce 200ms)
+- [x] 3.7 Dodać filtrowanie ciekawostek po kategorii
+- [x] 3.8 Dodać otwieranie modala ze szczegółami rośliny
+- [x] 3.9 Dodać otwieranie modala warstwy ekosystemu
+- [x] 3.10 Dodać otwieranie mini-modala ciekawostki
+- [x] 3.11 Dodać zamykanie modali (przycisk X, kliknięcie poza, Escape)
+- [x] 3.12 Dodać animację count-up dla statystyk
+- [x] 3.13 Dodać licznik wyników ("Wyświetlane: X z Y")
+- [x] 3.14 Dodać skeleton loading i usuwanie po załadowaniu
 
 ### Weryfikacja Sekcji 3
-- [ ] 3.8 Kliknąć filtry — karty aktualizują się poprawnie
-- [ ] 3.9 Wpisać tekst w wyszukiwarce — karty filtrują się w czasie rzeczywistym
-- [ ] 3.10 Kliknąć kartę — modal otwiera się ze szczegółami
-- [ ] 3.11 Sprawdzić konsolę — brak błędów
+- [x] 3.15 Kliknąć filtry — karty aktualizują się poprawnie
+- [x] 3.16 Wpisać tekst w wyszukiwarce — karty filtrują się w czasie rzeczywistym
+- [x] 3.17 Kliknąć kartę rośliny — modal otwiera się ze szczegółami
+- [x] 3.18 Kliknąć warstwę ekosystemu — modal otwiera się z opisem
+- [x] 3.19 Kliknąć kartę ciekawostki — mini-modal otwiera się
+- [x] 3.20 Sprawdzić scroll do Stats — liczniki animują się od 0
+- [x] 3.21 Sprawdzić konsolę — brak błędów
 
 ---
 
-## Sekcja 4: Udoskonalenia designu i funkcjonalności
+## Sekcja 4: Efekty wizualne i udoskonalenia
 
-- [ ] 4.1 Dodać efekt parallax w sekcji hero (tło przesuwa się wolniej przy scrollu)
-- [ ] 4.2 Zaimplementować smooth scroll do sekcji po kliknięciu w nawigację
-- [ ] 4.3 Dodać licznik wyświetlonych roślin ("Wyświetlane: X z Y")
-- [ ] 4.4 Dodać przycisk "Wróć na górę" (scroll to top)
-- [ ] 4.5 Zoptymalizować obrazki (lazy loading z `loading="lazy"`)
+- [x] 4.1 Dodać multi-layer parallax w Hero (4 warstwy, data-speed, requestAnimationFrame)
+- [x] 4.2 Dodać forest particles (canvas, 60 cząsteczek, tylko podczas scrolla)
+- [x] 4.3 Dodać smooth scroll do sekcji z offsetem navbara
+- [x] 4.4 Dodać scroll progress bar (szerokość według % scrolla)
+- [x] 4.5 Dodać przycisk "Wróć na górę" (pojawia się po 50% scrolla)
+- [x] 4.6 Dodać navbar scroll behavior (klasa `.scrolled` po 50px)
+- [x] 4.7 Dodać hamburger menu (toggle open/close, aria-expanded)
+- [x] 4.8 Dodać keyboard navigation (Arrow Up/Down między sekcjami)
+- [x] 4.9 Dodać section memory (localStorage — zapamiętywanie ostatniej sekcji)
+- [x] 4.10 Dodać escapeHtml helper (ochrona XSS)
+- [x] 4.11 Dodać image loading states (eager dla pierwszych 4, lazy dla reszty)
+- [x] 4.12 Dodać image onerror fallback (emoji zamiast błędnego obrazka)
 
 ### Weryfikacja Sekcji 4
-- [ ] 4.6 Przeskrollować stronę — efekt parallax widoczny
-- [ ] 4.7 Kliknąć przycisk "Wróć na górę" — strona przewija się do góry
-- [ ] 4.8 Sprawdzić czy lazy loading działa (network w DevTools)
+- [x] 4.13 Przeskrollować stronę — parallax widoczny w Hero
+- [x] 4.14 Przeskrollować — cząsteczki canvas pojawiają się
+- [x] 4.15 Kliknąć link w nawigacji — smooth scroll do sekcji
+- [x] 4.16 Sprawdzić pasek postępu — rośnie z scrollem
+- [x] 4.17 Kliknąć "Wróć na górę" — strona przewija się do góry
+- [x] 4.18 Nacisnąć Arrow Down — nawigacja do następnej sekcji
+- [x] 4.19 Odświeżyć stronę — localStorage przywraca ostatnią sekcję
+- [x] 4.20 Sprawdzić lazy loading (Network w DevTools)
 
 ---
 
 ## Finalizacja
 
-- [ ] F.1 Zweryfikować HTML (walidacja)
-- [ ] F.2 Sprawdzić JavaScript (`node --check script.js`)
-- [ ] F.3 Przejrzeć wszystkie zmiany — `git diff`
-- [ ] F.4 Upewnić się, że strona działa poprawnie (regression check)
-- [ ] F.5 Stworzyć commit: `feat: dodaj stronę Leśny Herbarium z katalogiem roślin`
+- [x] F.1 Zweryfikować HTML (walidacja)
+- [x] F.2 Sprawdzić JavaScript (`node --check script.js`)
+- [x] F.3 Przejrzeć wszystkie zmiany
+- [x] F.4 Upewnić się, że strona działa poprawnie (regression check)
+- [x] F.5 Sprawdzić responsywność (375px, 768px, 1280px)
+- [x] F.6 Sprawdzić accessibility (ARIA labels, keyboard nav, focus management)

@@ -14,7 +14,10 @@
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+  <body>
+
+  <!-- ==================== SCROLL PROGRESS BAR ==================== -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ==================== HEADER / NAVBAR ==================== -->
   <header class="site-header" id="site-header">
@@ -44,15 +47,205 @@
 
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero" id="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-content">
+      <div class="hero-bg parallax-layer" data-speed="0.3" aria-hidden="true"></div>
+      <div class="hero-overlay parallax-layer" data-speed="0.5" aria-hidden="true"></div>
+      <div class="hero-content parallax-layer" data-speed="0.15">
         <h1 class="hero-title">Leśny Herbarium</h1>
         <p class="hero-subtitle">Odkryj tajemnice ekosystemu leśnego — od gleby po korony drzew</p>
         <a href="#catalog" class="hero-cta">Przeglądaj katalog</a>
       </div>
-      <div class="hero-scroll-indicator" aria-hidden="true">
+      <div class="hero-foreground parallax-layer" data-speed="0.6" aria-hidden="true"></div>
+      <div class="hero-scroll-indicator parallax-layer" data-speed="0.1" aria-hidden="true">
         <span class="scroll-arrow"></span>
+      </div>
+    </section>
+
+    <!-- ==================== STATS SECTION ==================== -->
+    <section class="stats-section" id="stats">
+      <div class="stats-container">
+        <div class="stats-grid">
+
+          <div class="stat-item">
+            <span class="stat-icon" aria-hidden="true">🌳</span>
+            <span class="stat-number" data-target="9500000">0</span>
+            <span class="stat-suffix">ha</span>
+            <p class="stat-label">Powierzchnia lasów w Polsce</p>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon" aria-hidden="true">🌲</span>
+            <span class="stat-number" data-target="2500">0</span>
+            <span class="stat-suffix">mld</span>
+            <p class="stat-label">Drzew rośnie w polskich lasach</p>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon" aria-hidden="true">💨</span>
+            <span class="stat-number" data-target="60">0</span>
+            <span class="stat-suffix">mln ton</span>
+            <p class="stat-label">Tlenu produkują rocznie</p>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-icon" aria-hidden="true">🦌</span>
+            <span class="stat-number" data-target="8000">0</span>
+            <span class="stat-suffix">+</span>
+            <p class="stat-label">Gatunków zwierząt w lasach</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ECOSYSTEM MAP ==================== -->
+    <section class="ecosystem-map" id="ecosystem-map">
+      <div class="ecosystem-map-container">
+
+        <div class="ecosystem-map-header">
+          <h2 class="ecosystem-map-title">Warstwy Lasu</h2>
+          <p class="ecosystem-map-description">
+            Kliknij na warstwę ekosystemu, aby odkryć jej tajemnice.
+          </p>
+        </div>
+
+        <div class="ecosystem-visual">
+          <!-- Layer 7: Niebo -->
+          <div class="ecosystem-layer layer-niebo" data-layer="niebo" tabindex="0" role="button" aria-label="Warstwa nieba">
+            <div class="layer-content">
+              <span class="layer-emoji">☁️</span>
+              <span class="layer-label">Niebo</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>☁️ Niebo</h3>
+              <p>Oddech lasu — fotosynteza, produkcja tlenu, ochrona klimatu</p>
+            </div>
+          </div>
+
+          <!-- Layer 6: Korona drzew -->
+          <div class="ecosystem-layer layer-korona" data-layer="korona" tabindex="0" role="button" aria-label="Korona drzew">
+            <div class="layer-content">
+              <span class="layer-emoji">🌳</span>
+              <span class="layer-label">Korona</span>
+              <!-- Animated animal SVGs -->
+              <div class="korona-animals">
+                <!-- Squirrel -->
+                <svg class="animal-svg animal-squirrel" viewBox="0 0 64 64" aria-hidden="true">
+                  <text x="32" y="44" text-anchor="middle" font-size="36">🐿️</text>
+                </svg>
+                <!-- Woodpecker -->
+                <svg class="animal-svg animal-woodpecker" viewBox="0 0 64 64" aria-hidden="true">
+                  <text x="32" y="44" text-anchor="middle" font-size="36">🐦</text>
+                </svg>
+                <!-- Bird -->
+                <svg class="animal-svg animal-bird" viewBox="0 0 64 64" aria-hidden="true">
+                  <text x="32" y="44" text-anchor="middle" font-size="36">🕊️</text>
+                </svg>
+              </div>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🌳 Korona Drzew</h3>
+              <p>Baldachim zieleni — fotosynteza, wiewiórki, dzięcioły, crown shyness</p>
+            </div>
+          </div>
+
+          <!-- Layer 5: Pnie drzew -->
+          <div class="ecosystem-layer layer-pnie" data-layer="pnie" tabindex="0" role="button" aria-label="Pnie drzew">
+            <div class="layer-content">
+              <span class="layer-emoji">🪵</span>
+              <span class="layer-label">Pnie</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🪵 Pnie Drzew</h3>
+              <p>Kolumny katedry natury — kora, łyko, kambium, twardziel, rdzeń</p>
+            </div>
+          </div>
+
+          <!-- Layer 4: Podszyt -->
+          <div class="ecosystem-layer layer-podszyt" data-layer="podszyt" tabindex="0" role="button" aria-label="Podszyt">
+            <div class="layer-content">
+              <span class="layer-emoji">🌾</span>
+              <span class="layer-label">Podszyt</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🌾 Podszyt</h3>
+              <p>Poczekalnia gigantów — leszczyna, kruszyna, dzika róża, młode dęby</p>
+            </div>
+          </div>
+
+          <!-- Layer 3: Runo leśne -->
+          <div class="ecosystem-layer layer-runo" data-layer="runo" tabindex="0" role="button" aria-label="Runo leśne">
+            <div class="layer-content">
+              <span class="layer-emoji">🌿</span>
+              <span class="layer-label">Runo</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🌿 Runo Leśne</h3>
+              <p>Zielony dywan — paprocie, mchy, borówki, konwalie, grzyby</p>
+            </div>
+          </div>
+
+          <!-- Layer 2: Ściółka -->
+          <div class="ecosystem-layer layer-sciolka" data-layer="sciolka" tabindex="0" role="button" aria-label="Ściółka">
+            <div class="layer-content">
+              <span class="layer-emoji">🍂</span>
+              <span class="layer-label">Ściółka</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🍂 Ściółka</h3>
+              <p>Recykling natury — opadłe liście, rozkładacze, grzyby saprofityczne</p>
+            </div>
+          </div>
+
+          <!-- Layer 1: Gleba -->
+          <div class="ecosystem-layer layer-gleba" data-layer="gleba" tabindex="0" role="button" aria-label="Gleba">
+            <div class="layer-content">
+              <span class="layer-emoji">🪱</span>
+              <span class="layer-label">Gleba</span>
+            </div>
+            <div class="layer-tooltip">
+              <h3>🪱 Gleba</h3>
+              <p>Ukryty świat — grzybnia (Wood Wide Web), mikroorganizmy, dżdżownice</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== DISCOVER / KLIKNIJ I POZNAJ ==================== -->
+    <section class="discover-section" id="discover">
+      <div class="discover-container">
+
+        <div class="discover-header">
+          <h2 class="discover-title">Kliknij i Poznaj</h2>
+          <p class="discover-description">
+            Odkryj fascynujące ciekawostki o mieszkańcach polskich lasów.
+          </p>
+        </div>
+
+        <div class="discover-filters" role="group" aria-label="Filtry ciekawostek">
+          <button class="discover-filter-btn active" data-category="all">Wszystkie</button>
+          <button class="discover-filter-btn" data-category="drzewa">Drzewa</button>
+          <button class="discover-filter-btn" data-category="kwiaty">Kwiaty</button>
+          <button class="discover-filter-btn" data-category="grzyby">Grzyby</button>
+          <button class="discover-filter-btn" data-category="rośliny">Rośliny</button>
+          <button class="discover-filter-btn" data-category="zwierzęta">Zwierzęta</button>
+        </div>
+
+        <div class="discover-grid" id="discover-grid">
+          <!-- JS will render fact cards here -->
+          <div class="skeleton-card" aria-hidden="true"></div>
+          <div class="skeleton-card" aria-hidden="true"></div>
+          <div class="skeleton-card" aria-hidden="true"></div>
+          <div class="skeleton-card" aria-hidden="true"></div>
+        </div>
+
+        <div class="no-results" id="discover-no-results" hidden>
+          <span class="no-results-icon" aria-hidden="true">🔍</span>
+          <h3>Brak ciekawostek w tej kategorii</h3>
+          <p>Spróbuj wybrać inną kategorię.</p>
+        </div>
+
       </div>
     </section>
 
@@ -180,6 +373,53 @@
       <polyline points="18 15 12 9 6 15"></polyline>
     </svg>
   </button>
+
+  <!-- ==================== ECOSYSTEM LAYER MODAL ==================== -->
+  <div class="eco-modal-overlay" id="eco-modal-overlay" hidden aria-hidden="true">
+    <div class="eco-modal" id="eco-modal" role="dialog" aria-modal="true" aria-labelledby="eco-modal-title">
+      <button class="eco-modal-close" id="eco-modal-close" aria-label="Zamknij opis warstwy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="eco-modal-header" id="eco-modal-header">
+        <span class="eco-modal-emoji" id="eco-modal-emoji"></span>
+        <h2 class="eco-modal-title" id="eco-modal-title"></h2>
+      </div>
+      <div class="eco-modal-body">
+        <p class="eco-modal-description" id="eco-modal-description"></p>
+        <div class="eco-modal-facts">
+          <h3>Ciekawostki</h3>
+          <ul id="eco-modal-facts-list"></ul>
+        </div>
+        <div class="eco-modal-species">
+          <h3>Przedstawiciele</h3>
+          <p id="eco-modal-species"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FACT MINI-MODAL ==================== -->
+  <div class="fact-modal-overlay" id="fact-modal-overlay" hidden aria-hidden="true">
+    <div class="fact-modal" id="fact-modal" role="dialog" aria-modal="true" aria-labelledby="fact-modal-title">
+      <button class="fact-modal-close" id="fact-modal-close" aria-label="Zamknij ciekawostkę">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="fact-modal-content">
+        <div class="fact-modal-image-wrapper">
+          <img class="fact-modal-image" id="fact-modal-image" src="" alt="">
+        </div>
+        <h3 class="fact-modal-title" id="fact-modal-title"></h3>
+        <span class="fact-modal-category" id="fact-modal-category"></span>
+        <p class="fact-modal-fact" id="fact-modal-fact"></p>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="footer" id="footer">

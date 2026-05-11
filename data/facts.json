@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Dąb szypułkowy",
+    "emoji": "🌳",
+    "category": "drzewa",
+    "funFact": "Jeden duży dąb transportuje nawet 400 litrów wody dziennie z gleby do liści.",
+    "image": "https://internetowyogrod.pl/media/img/b/md/dab-szypulkowy-quercus-robur-2_800x450.webp"
+  },
+  {
+    "id": 2,
+    "name": "Brzoza brodawkowata",
+    "emoji": "🌿",
+    "category": "drzewa",
+    "funFact": "Kora brzozy zawiera betuline — substancję o właściwościach antybakteryjnych i przeciwzapalnych.",
+    "image": "https://www.drzewa.nk4.netmark.pl/zasoby/atlas/brzoza/brzoza_brodawkowata/brzoza_brodawkowata_000_s.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Muchomor czerwony",
+    "emoji": "🍄",
+    "category": "grzyby",
+    "funFact": "Muchomor czerwony zawiera kwas ibotenowy i muscymol — substancje działające psychoaktywnie na układ nerwowy.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Wiewiórka pospolita",
+    "emoji": "🐿️",
+    "category": "zwierzęta",
+    "funFact": "Wiewiórka sadzi tysiące drzew rocznie, zapomina o ukrytych orzechach, które potem kiełkują.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/250px-Squirrel_posing.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Dzięcioł duży",
+    "emoji": "🐦",
+    "category": "zwierzęta",
+    "funFact": "Dzięcioł dziobie z siłą 1200g — to jak uderzenie młotkiem 20 razy na sekundę. Jego mózg jest chroniony przez gąbczastą kość czaszki.",
+    "image": "https://s3.animalia.bio/animals/photos/full/original/great-spotted-woodpecker-7.webp"
+  },
+  {
+    "id": 6,
+    "name": "Sarna europejska",
+    "emoji": "🦌",
+    "category": "zwierzęta",
+    "funFact": "Sarny potrafią skoczyć na wysokość do 2 metrów i przebiec 40 km/h. Ich białe lustro ogonowe służy do komunikacji z innymi sarnami.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Przysieki%2C_sarny_%28HB1%29.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Konwalia majowa",
+    "emoji": "🌸",
+    "category": "kwiaty",
+    "funFact": "Zapach konwalii jest tak intensywny, że olejek eteryczny z jej kwiatów jest wykorzystywany w przemyśle perfumeryjnym.",
+    "image": "https://www.futuregardens.pl/uploads/fotosik/images10/2063/2d298c2e565486a2.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Dzik (Dziki dzik)",
+    "emoji": "🐗",
+    "category": "zwierzęta",
+    "funFact": "Dziki mają wyjątkowo czuły węch — potrafią wyczuć żołędzie pod 15 cm warstwą liści. Ich ryj (pysk) jest tak silny, że potrafią orac glebę.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Locha%28js%29.jpg/1280px-Locha%28js%29.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Jeleń szlachetny",
+    "emoji": "🦌",
+    "category": "zwierzęta",
+    "funFact": "Rogi jelenia rosną do 2 cm dziennie w sezonie. Co roku jelenie zrzucą i odbudowują poroże — to jedyny narząd w królestwie zwierząt, który regeneruje się całkowicie.",
+    "image": "https://www.ekologia.pl/wp-content/uploads/2018/09/jelen-szlachetny1-900x900.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Sowa uszata",
+    "emoji": "🦉",
+    "category": "zwierzęta",
+    "funFact": "Sowa uszata potrafi obrócić głowę o 270 stopni. Jej uszy są asymetryczne — jedno wyżej, drugie niżej — co pozwala jej lokalizować dźwięk z dokładnością do 1 stopnia.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/Waldohreule_in_freier_Wildbahn.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Żubr europejski",
+    "emoji": "🦬",
+    "category": "zwierzęta",
+    "funFact": "Żubr jest największym lądowym ssakiem Europy — waży do 1000 kg. W Polsce żyje około 2000 żubrów, głównie w Puszczy Białowieskiej.",
+    "image": "https://tvn24.pl/_e/i/najnowsze/cdn-zdjecie-gl8x9z-zubr-europejski-ph5717193/alternates/WEBP_LANDSCAPE_1280"
+  },
+  {
+    "id": 12,
+    "name": "Wilczomlecz leśny",
+    "emoji": "🌱",
+    "category": "rośliny",
+    "funFact": "Wilczomlecz produkuje trujący sok mleczny jako obronę przed roślinożercami. W starożytności używano go jako lekarstwa na brodawki.",
+    "image": "https://encyklopedialesna.com/foto/hasla/0/0/wilczomlecz_sosnka.JPG"
+  }
+]
